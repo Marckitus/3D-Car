@@ -66,40 +66,28 @@ bool ModulePhysics3D::Start()
 		world->addRigidBody(body);
 	}
 	{
-		btCollisionShape* colShape = new btStaticPlaneShape(btVector3(1, 0, 0), -50);
-
-		btDefaultMotionState* myMotionState = new btDefaultMotionState();
-		btRigidBody::btRigidBodyConstructionInfo rbInfo(0.0f, myMotionState, colShape);
-
-		btRigidBody* body = new btRigidBody(rbInfo);
-		world->addRigidBody(body);
+		Cube s(2, 100, 100);
+		s.SetPos(-50, 50, 0);
+		float force = 30.0f;
+		AddBody(s, 0)->Push(-(-50 * force), -(50 * force), -(0 * force));
 	}
 	{
-		btCollisionShape* colShape = new btStaticPlaneShape(btVector3(-1, 0, 0), -50);
-
-		btDefaultMotionState* myMotionState = new btDefaultMotionState();
-		btRigidBody::btRigidBodyConstructionInfo rbInfo(0.0f, myMotionState, colShape);
-
-		btRigidBody* body = new btRigidBody(rbInfo);
-		world->addRigidBody(body);
+		Cube s(2, 100, 100);
+		s.SetPos(50, 50, 0);
+		float force = 30.0f;
+		AddBody(s, 0)->Push(-(50 * force), -(50 * force), -(0 * force));
 	}
 	{
-		btCollisionShape* colShape = new btStaticPlaneShape(btVector3(0, 0, 1), -50);
-
-		btDefaultMotionState* myMotionState = new btDefaultMotionState();
-		btRigidBody::btRigidBodyConstructionInfo rbInfo(0.0f, myMotionState, colShape);
-
-		btRigidBody* body = new btRigidBody(rbInfo);
-		world->addRigidBody(body);
+		Cube s(100, 100, 2);
+		s.SetPos(0, 50, -50);
+		float force = 30.0f;
+		AddBody(s, 0)->Push(-(0 * force), -(50 * force), -(-50 * force));
 	}
 	{
-		btCollisionShape* colShape = new btStaticPlaneShape(btVector3(0, 0, -1), -50);
-
-		btDefaultMotionState* myMotionState = new btDefaultMotionState();
-		btRigidBody::btRigidBodyConstructionInfo rbInfo(0.0f, myMotionState, colShape);
-
-		btRigidBody* body = new btRigidBody(rbInfo);
-		world->addRigidBody(body);
+		Cube s(100, 100, 2);
+		s.SetPos(0, 50, 50);
+		float force = 30.0f;
+		AddBody(s, 0)->Push(-(0 * force), -(50 * force), -(50 * force));
 	}
 
 	return true;
@@ -175,7 +163,7 @@ update_status ModulePhysics3D::Update(float dt)
 			Cube s(20, 20, 20);
 			s.SetPos(0, 0, 0);
 			float force = 30.0f;
-			AddBody(s)->Push(-(0 * force), -(0 * force), -(0 * force));
+			AddBody(s, 0)->Push(-(0 * force), -(0 * force), -(0 * force));
 		}
 	}
 
