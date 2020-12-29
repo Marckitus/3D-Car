@@ -66,30 +66,110 @@ bool ModulePhysics3D::Start()
 		world->addRigidBody(body);
 	}
 	{
-		Cube s(2, 100, 100);
-		s.SetPos(-50, 50, 0);
-		float force = 30.0f;
-		AddBody(s, 0)->Push(-(-50 * force), -(50 * force), -(0 * force));
-	}
-	{
-		Cube s(2, 100, 100);
-		s.SetPos(50, 50, 0);
-		float force = 30.0f;
-		AddBody(s, 0)->Push(-(50 * force), -(50 * force), -(0 * force));
-	}
-	{
-		Cube s(100, 100, 2);
-		s.SetPos(0, 50, -50);
-		float force = 30.0f;
-		AddBody(s, 0)->Push(-(0 * force), -(50 * force), -(-50 * force));
-	}
-	{
-		Cube s(100, 100, 2);
-		s.SetPos(0, 50, 50);
-		float force = 30.0f;
-		AddBody(s, 0)->Push(-(0 * force), -(50 * force), -(50 * force));
-	}
 
+		Cube wall(2, 100, 100);
+		wall.SetPos(-50, 50, 0);
+		wall.color = White;
+		float force = 30.0f;
+		
+		AddBody(wall, 0)->Push(-(-50 * force), -(50 * force), -(0 * force));
+	}
+	{
+		Cube wall(2, 100, 100);
+		wall.SetPos(50, 50, 0);
+		wall.color = White;
+
+		float force = 30.0f;
+		AddBody(wall, 0)->Push(-(50 * force), -(50 * force), -(0 * force));
+	}
+	{
+		Cube wall(100, 100, 2);
+		wall.SetPos(0, 50, -50);
+		wall.color = White;
+
+		float force = 30.0f;
+		AddBody(wall, 0)->Push(-(0 * force), -(50 * force), -(-50 * force));
+	}
+	{
+		Cube wall(100, 100, 2);
+		wall.SetPos(0, 50, 50);
+		wall.color= White;
+
+		float force = 30.0f;
+		AddBody(wall, 0)->Push(-(0 * force), -(50 * force), -(50 * force));
+	}
+	{
+
+		Cube obs(3, 5, 10);
+		obs.SetPos(15, 0, 0);
+		obs.color = Blue;
+		float force = 30.0f;
+
+		AddBody(obs, 0)->Push(-(15 * force), -(0 * force), -(0 * force));
+	}
+	{
+
+		Cube obs(3, 5, 10);
+		obs.SetPos(-15, 0, 0);
+		obs.color = Blue;
+		float force = 30.0f;
+
+		AddBody(obs, 0)->Push(-(-15 * force), -(0 * force), -(0 * force));
+	}
+	{
+
+		Cube obs(10, 5, 3);
+		obs.SetPos(0, 0, -15);
+		obs.color = Blue;
+		float force = 30.0f;
+
+		AddBody(obs, 0)->Push(-(0 * force), -(0 * force), -(-15 * force));
+	}
+	{
+
+		Cube obs(10, 5, 3);
+		obs.SetPos(0, 0, 15);
+		obs.color = Blue;
+		float force = 30.0f;
+
+		AddBody(obs, 0)->Push(-(0 * force), -(0 * force), -(15 * force));
+	}
+	{
+
+		Cube obs(10, 5, 10);
+		obs.SetPos(25, 0, 25);
+		obs.color = Blue;
+		float force = 30.0f;
+
+		AddBody(obs, 0)->Push(-(25 * force), -(0 * force), -(25 * force));
+	}
+	{
+
+		Cube obs(10, 5, 10);
+		obs.SetPos(-25, 0, -25);
+		obs.color = Blue;
+		float force = 30.0f;
+
+		AddBody(obs, 0)->Push(-(25 * force), -(0 * force), -(-25 * force));
+	}
+	{
+
+		Cube obs(10, 5, 10);
+		obs.SetPos(-25, 0, 25);
+		obs.color = Blue;
+		float force = 30.0f;
+
+		AddBody(obs, 0)->Push(-(-25 * force), -(0 * force), -(25 * force));
+	} 
+	{
+
+		Cube obs(10, 5, 10);
+		obs.SetPos(25, 0, -25);
+		obs.color = Blue;
+		float force = 30.0f;
+
+		AddBody(obs, 0)->Push(-(25 * force), -(0 * force), -(-25 * force));
+	}
 	return true;
 }
 
@@ -153,10 +233,10 @@ update_status ModulePhysics3D::Update(float dt)
 
 		if(App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
 		{
-			Sphere s(1);
+			Sphere s(2.5f);
 			s.SetPos(App->camera->Position.x, App->camera->Position.y, App->camera->Position.z);
 			float force = 30.0f;
-			AddBody(s)->Push(-(App->camera->Z.x * force), -(App->camera->Z.y * force), -(App->camera->Z.z * force));
+			AddBody(s,1.0f)->Push(-(App->camera->Z.x * force), -(App->camera->Z.y * force), -(App->camera->Z.z * force));
 		}
 		if (App->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN)
 		{
