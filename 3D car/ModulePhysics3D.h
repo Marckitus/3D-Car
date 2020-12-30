@@ -35,6 +35,9 @@ public:
 	void AddConstraintP2P(PhysBody3D& bodyA, PhysBody3D& bodyB, const vec3& anchorA, const vec3& anchorB);
 	void AddConstraintHinge(PhysBody3D& bodyA, PhysBody3D& bodyB, const vec3& anchorA, const vec3& anchorB, const vec3& axisS, const vec3& axisB, bool disable_collision = false);
 
+
+
+
 private:
 
 	bool debug;
@@ -52,6 +55,20 @@ private:
 	p2List<btDefaultMotionState*> motions;
 	p2List<btTypedConstraint*> constraints;
 	p2List<PhysVehicle3D*> vehicles;
+	Cube wall1;
+	Cube wall2;
+	Cube wall3;
+	Cube wall4;
+	Cube obs1;
+	Cube obs2;
+	Cube obs3;
+	Cube obs4;
+	Cube obs5;
+	Cube obs6;
+	Cube obs7;
+	Cube obs8;
+	Cylinder goal;
+
 };
 
 class DebugDrawer : public btIDebugDraw
@@ -70,4 +87,5 @@ public:
 	DebugDrawModes mode;
 	Line line;
 	Primitive point;
+	
 };

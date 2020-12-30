@@ -37,7 +37,7 @@ update_status ModuleSceneIntro::Update(float dt)
 	Plane p(0, 1, 0, 0);
 	p.axis = true;
 	p.wire = false;
-	p.color = White;
+	p.color = Blue;
 	p.Render();
 
 	return UPDATE_CONTINUE;

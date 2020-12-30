@@ -65,121 +65,106 @@ bool ModulePhysics3D::Start()
 		btRigidBody* body = new btRigidBody(rbInfo);
 		world->addRigidBody(body);
 	}
-	{
+	
+	wall1.size.Set(2, 100, 100);
+	wall1.SetPos(-50, 50, 0);
+	float force1 = 30.0f;
+	wall1.color = Sky;
+	AddBody(wall1, 0)->Push(-(-50 * force1), -(50 * force1), -(0 * force1));
 
-		Cube wall(2, 100, 100);
-		wall.SetPos(-50, 50, 0);
-		wall.color = White;
-		float force = 30.0f;
-		
-		AddBody(wall, 0)->Push(-(-50 * force), -(50 * force), -(0 * force));
-	}
-	{
-		Cube wall(2, 100, 100);
-		wall.SetPos(50, 50, 0);
-		wall.color = White;
+	wall2.size.Set(100, 100, 2);
+	wall2.SetPos(0, 50, -50);
+	wall2.color = Sky;
+	float force2 = 30.0f;
+	AddBody(wall2, 0)->Push(-(0 * force2), -(50 * force2), -(-50 * force2));
+	
+	wall3.size.Set(100, 100, 2);
+	wall3.SetPos(0, 50, 50);
+	wall3.color= Sky;
+	float force3 = 30.0f;
+	AddBody(wall3, 0)->Push(-(0 * force3), -(50 * force3), -(50 * force3));
+	
+	wall4.size.Set(2, 100, 100);
+	wall4.SetPos(50, 50, 0);
+	wall4.color = Sky;
+	float force4 = 30.0f;
+	AddBody(wall4, 0)->Push(-(50 * force4), -(50 * force4), -(0 * force4));
+	
+	
 
-		float force = 30.0f;
-		AddBody(wall, 0)->Push(-(50 * force), -(50 * force), -(0 * force));
-	}
-	{
-		Cube wall(100, 100, 2);
-		wall.SetPos(0, 50, -50);
-		wall.color = White;
+	obs1.size.Set(3, 5, 10);
+	obs1.SetPos(15, 0, 0);
+	obs1.color = Sand;
+	float force5 = 30.0f;
+	AddBody(obs1, 0)->Push(-(15 * force5), -(0 * force5), -(0 * force5));
+	
+	
 
-		float force = 30.0f;
-		AddBody(wall, 0)->Push(-(0 * force), -(50 * force), -(-50 * force));
-	}
-	{
-		Cube wall(100, 100, 2);
-		wall.SetPos(0, 50, 50);
-		wall.color= White;
+	obs2.size.Set(3, 5, 10);
+	obs2.SetPos(-15, 0, 0);
+	obs2.color = Sand;
+	float force6 = 30.0f;
+	AddBody(obs2, 0)->Push(-(-15 * force6), -(0 * force6), -(0 * force6));
+	
 
-		float force = 30.0f;
-		AddBody(wall, 0)->Push(-(0 * force), -(50 * force), -(50 * force));
-	}
-	{
 
-		Cube obs(3, 5, 10);
-		obs.SetPos(15, 0, 0);
-		obs.color = Blue;
-		float force = 30.0f;
+	obs3.size.Set(10, 5, 3);
+	obs3.SetPos(0, 0, -15);
+	obs3.color = Sand;
+	float force7 = 30.0f;
+	AddBody(obs3, 0)->Push(-(0 * force7), -(0 * force7), -(-15 * force7));
+	
+	
 
-		AddBody(obs, 0)->Push(-(15 * force), -(0 * force), -(0 * force));
-	}
-	{
+	obs4.size.Set(10, 5, 3);
+	obs4.SetPos(0, 0, 15);
+	obs4.color = Sand;
+	float force8 = 30.0f;
+	AddBody(obs4, 0)->Push(-(0 * force8), -(0 * force8), -(15 * force8));
+	
+	
 
-		Cube obs(3, 5, 10);
-		obs.SetPos(-15, 0, 0);
-		obs.color = Blue;
-		float force = 30.0f;
+	obs5.size.Set(10, 5, 10);
+	obs5.SetPos(25, 0, 25);
+	obs5.color = Sand;
+	float force9 = 30.0f;
+	AddBody(obs5, 0)->Push(-(25 * force9), -(0 * force9), -(25 * force9));
+	
+	
 
-		AddBody(obs, 0)->Push(-(-15 * force), -(0 * force), -(0 * force));
-	}
-	{
+	obs6.size.Set(10, 5, 10);
+	obs6.SetPos(-25, 0, -25);
+	obs6.color = Sand;
+	float force10 = 30.0f;
+	AddBody(obs6, 0)->Push(-(25 * force10), -(0 * force10), -(-25 * force10));
+	
+	
 
-		Cube obs(10, 5, 3);
-		obs.SetPos(0, 0, -15);
-		obs.color = Blue;
-		float force = 30.0f;
+	obs7.size.Set(10, 5, 10);
+	obs7.SetPos(-25, 0, 25);
+	obs7.color = Sand;
+	float force11= 30.0f;
+	AddBody(obs7, 0)->Push(-(-25 * force11), -(0 * force11), -(25 * force11));
+	
+	
 
-		AddBody(obs, 0)->Push(-(0 * force), -(0 * force), -(-15 * force));
-	}
-	{
-
-		Cube obs(10, 5, 3);
-		obs.SetPos(0, 0, 15);
-		obs.color = Blue;
-		float force = 30.0f;
-
-		AddBody(obs, 0)->Push(-(0 * force), -(0 * force), -(15 * force));
-	}
-	{
-
-		Cube obs(10, 5, 10);
-		obs.SetPos(25, 0, 25);
-		obs.color = Blue;
-		float force = 30.0f;
-
-		AddBody(obs, 0)->Push(-(25 * force), -(0 * force), -(25 * force));
-	}
-	{
-
-		Cube obs(10, 5, 10);
-		obs.SetPos(-25, 0, -25);
-		obs.color = Blue;
-		float force = 30.0f;
-
-		AddBody(obs, 0)->Push(-(25 * force), -(0 * force), -(-25 * force));
-	}
-	{
-
-		Cube obs(10, 5, 10);
-		obs.SetPos(-25, 0, 25);
-		obs.color = Blue;
-		float force = 30.0f;
-
-		AddBody(obs, 0)->Push(-(-25 * force), -(0 * force), -(25 * force));
-	} 
-	{
-
-		Cube obs(10, 5, 10);
-		obs.SetPos(25, 0, -25);
-		obs.color = Blue;
-		float force = 30.0f;
-
-		AddBody(obs, 0)->Push(-(25 * force), -(0 * force), -(-25 * force));
-	}
-	{
+	obs8.size.Set(10, 5, 10);
+	obs8.SetPos(25, 0, -25);
+	obs8.color = Sand;
+	float force12 = 30.0f;
+	AddBody(obs8, 0)->Push(-(25 * force12), -(0 * force12), -(-25 * force12));
+	
+	
 		vec3 rotate = (0, 0, 1);
-		Cylinder goal(5, 1);
+		goal.height = 1;
+		goal.radius = 5;
 		goal.SetPos(0, 0, 0);
-		goal.color = Blue;
+		goal.color = Green;
 		float force = 30.0f;
 		goal.SetRotation(120, rotate);
 
 		AddBody(goal, 0)->Push(-(0 * force), -(0 * force), -(0 * force));
-	}
+	
 	return true;
 }
 
@@ -226,6 +211,21 @@ update_status ModulePhysics3D::PreUpdate(float dt)
 // ---------------------------------------------------------
 update_status ModulePhysics3D::Update(float dt)
 {
+	wall1.Render();
+	wall2.Render();
+	wall3.Render();
+	wall4.Render();
+	obs1.Render();
+	obs2.Render();
+	obs3.Render();
+	obs4.Render();
+	obs5.Render();
+	obs6.Render();
+	obs7.Render();
+	obs8.Render();
+	goal.Render();
+
+	
 	if(App->input->GetKey(SDL_SCANCODE_F1) == KEY_DOWN)
 		debug = !debug;
 
