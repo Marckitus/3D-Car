@@ -170,6 +170,16 @@ bool ModulePhysics3D::Start()
 
 		AddBody(obs, 0)->Push(-(25 * force), -(0 * force), -(-25 * force));
 	}
+	{
+		vec3 rotate = (0, 0, 1);
+		Cylinder goal(5, 1);
+		goal.SetPos(0, 0, 0);
+		goal.color = Blue;
+		float force = 30.0f;
+		goal.SetRotation(120, rotate);
+
+		AddBody(goal, 0)->Push(-(0 * force), -(0 * force), -(0 * force));
+	}
 	return true;
 }
 
