@@ -1,2 +1,4 @@
 C:\Users\marcpl2\Desktop\Nueva carpeta\Debug\3D Physics - class5.exe
 C:\Users\marcpl2\Desktop\Nueva carpeta\Debug\3D Physics - class5.pdb
+C:\Users\POL\Documents\GitHub\3D-Car\3D car\Debug\3D Physics - class5.exe
+C:\Users\POL\Documents\GitHub\3D-Car\3D car\Debug\3D Physics - class5.pdb
