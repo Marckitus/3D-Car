@@ -4,6 +4,7 @@
 #include "PhysBody3D.h"
 #include "PhysVehicle3D.h"
 #include "Primitive.h"
+#include "Time.h"
 
 #ifdef _DEBUG
 	#pragma comment (lib, "Bullet/libx86/BulletDynamics_debug.lib")
@@ -95,64 +96,48 @@ bool ModulePhysics3D::Start()
 	wall4.color = Sky;
 	float force4 = 30.0f;
 	AddBody(wall4, 0)->Push(-(50 * force4), -(35 * force4), -(0 * force4));
-	
-	
 
 	obs1.size.Set(3, 5, 10);
 	obs1.SetPos(15, 0, 0);
 	obs1.color = Sand;
 	float force5 = 30.0f;
 	AddBody(obs1, 0)->Push(-(15 * force5), -(0 * force5), -(0 * force5));
-	
-	
 
 	obs2.size.Set(3, 5, 10);
 	obs2.SetPos(-15, 0, 0);
 	obs2.color = Sand;
 	float force6 = 30.0f;
 	AddBody(obs2, 0)->Push(-(-15 * force6), -(0 * force6), -(0 * force6));
-	
-
 
 	obs3.size.Set(10, 5, 3);
 	obs3.SetPos(0, 0, -15);
 	obs3.color = Sand;
 	float force7 = 30.0f;
 	AddBody(obs3, 0)->Push(-(0 * force7), -(0 * force7), -(-15 * force7));
-	
-	
 
 	obs4.size.Set(10, 5, 3);
 	obs4.SetPos(0, 0, 15);
 	obs4.color = Sand;
 	float force8 = 30.0f;
 	AddBody(obs4, 0)->Push(-(0 * force8), -(0 * force8), -(15 * force8));
-	
-	
 
 	obs5.size.Set(10, 5, 10);
 	obs5.SetPos(25, 0, 25);
 	obs5.color = Sand;
 	float force9 = 30.0f;
 	AddBody(obs5, 0)->Push(-(25 * force9), -(0 * force9), -(25 * force9));
-	
-	
 
 	obs6.size.Set(10, 5, 10);
 	obs6.SetPos(-25, 0, -25);
 	obs6.color = Sand;
 	float force10 = 30.0f;
 	AddBody(obs6, 0)->Push(-(25 * force10), -(0 * force10), -(-25 * force10));
-	
-	
 
 	obs7.size.Set(10, 5, 10);
 	obs7.SetPos(-25, 0, 25);
 	obs7.color = Sand;
 	float force11= 30.0f;
 	AddBody(obs7, 0)->Push(-(-25 * force11), -(0 * force11), -(25 * force11));
-	
-	
 
 	obs8.size.Set(10, 5, 10);
 	obs8.SetPos(25, 0, -25);
@@ -217,6 +202,7 @@ update_status ModulePhysics3D::PreUpdate(float dt)
 // ---------------------------------------------------------
 update_status ModulePhysics3D::Update(float dt)
 {
+	
 	floor.Render();
 	wall1.Render();
 	wall2.Render();
@@ -232,9 +218,38 @@ update_status ModulePhysics3D::Update(float dt)
 	obs8.Render();
 	goal.Render();
 
+
 	
 	if(App->input->GetKey(SDL_SCANCODE_F1) == KEY_DOWN)
 		debug = !debug;
+
+	if (App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
+	{
+		srand(time(NULL));
+		sphereSpawn = rand() % 4;
+		Sphere s(2.5f);
+		switch (sphereSpawn)
+		{
+		case 0:
+			s.SetPos(40, 3, 40);
+			break;
+		case 1:
+			s.SetPos(-40, 3, 40);
+			break;
+		case 2:
+			s.SetPos(40, 3, -40);
+			break;
+		case 3:
+			s.SetPos(-40, 3, -40);
+			break;
+		default:
+			break;
+		}
+		s.color = Red;
+		float force = 30.0f;
+		AddBody(s, 1.0f)->Push(-(App->camera->Z.x * force), -(App->camera->Z.y * force), -(App->camera->Z.z * force));
+		s.Render();
+	}
 
 	if(debug == true)
 	{
@@ -248,13 +263,7 @@ update_status ModulePhysics3D::Update(float dt)
 			item = item->next;
 		}
 
-		if(App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
-		{
-			Sphere s(2.5f);
-			s.SetPos(App->camera->Position.x, App->camera->Position.y, App->camera->Position.z);
-			float force = 30.0f;
-			AddBody(s,1.0f)->Push(-(App->camera->Z.x * force), -(App->camera->Z.y * force), -(App->camera->Z.z * force));
-		}
+		
 		if (App->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN)
 		{
 			Cube s(20, 20, 20);

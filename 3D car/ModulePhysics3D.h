@@ -69,6 +69,7 @@ private:
 	Cube obs7;
 	Cube obs8;
 	Cylinder goal;
+	int sphereSpawn;
 
 };
 
