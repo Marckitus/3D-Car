@@ -40,7 +40,7 @@ public:
 
 private:
 
-	bool debug;
+	bool debug = true;
 
 	btDefaultCollisionConfiguration*	collision_conf;
 	btCollisionDispatcher*				dispatcher;
@@ -55,6 +55,7 @@ private:
 	p2List<btDefaultMotionState*> motions;
 	p2List<btTypedConstraint*> constraints;
 	p2List<PhysVehicle3D*> vehicles;
+	Cube floor;
 	Cube wall1;
 	Cube wall2;
 	Cube wall3;

@@ -17,7 +17,7 @@
 
 ModulePhysics3D::ModulePhysics3D(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
-	debug = true;
+	debug = false;
 
 	collision_conf = new btDefaultCollisionConfiguration();
 	dispatcher = new btCollisionDispatcher(collision_conf);
@@ -65,30 +65,36 @@ bool ModulePhysics3D::Start()
 		btRigidBody* body = new btRigidBody(rbInfo);
 		world->addRigidBody(body);
 	}
+
+	floor.size.Set(100, 3, 100);
+	floor.SetPos(0, -1.4, 0);
+	float force0 = 30.0f;
+	floor.color = White;
+	AddBody(floor, 0)->Push(-(0 * force0), -(-4 * force0), -(0 * force0));
 	
-	wall1.size.Set(2, 100, 100);
-	wall1.SetPos(-50, 50, 0);
+	wall1.size.Set(2, 70, 100);
+	wall1.SetPos(-50, 35, 0);
 	float force1 = 30.0f;
 	wall1.color = Sky;
-	AddBody(wall1, 0)->Push(-(-50 * force1), -(50 * force1), -(0 * force1));
+	AddBody(wall1, 0)->Push(-(-50 * force1), -(35 * force1), -(0 * force1));
 
-	wall2.size.Set(100, 100, 2);
-	wall2.SetPos(0, 50, -50);
+	wall2.size.Set(100, 70, 2);
+	wall2.SetPos(0, 35, -50);
 	wall2.color = Sky;
 	float force2 = 30.0f;
-	AddBody(wall2, 0)->Push(-(0 * force2), -(50 * force2), -(-50 * force2));
+	AddBody(wall2, 0)->Push(-(0 * force2), -(35 * force2), -(-50 * force2));
 	
-	wall3.size.Set(100, 100, 2);
-	wall3.SetPos(0, 50, 50);
+	wall3.size.Set(100, 70, 2);
+	wall3.SetPos(0, 35, 50);
 	wall3.color= Sky;
 	float force3 = 30.0f;
-	AddBody(wall3, 0)->Push(-(0 * force3), -(50 * force3), -(50 * force3));
+	AddBody(wall3, 0)->Push(-(0 * force3), -(35 * force3), -(50 * force3));
 	
-	wall4.size.Set(2, 100, 100);
-	wall4.SetPos(50, 50, 0);
+	wall4.size.Set(2, 70, 100);
+	wall4.SetPos(50, 35, 0);
 	wall4.color = Sky;
 	float force4 = 30.0f;
-	AddBody(wall4, 0)->Push(-(50 * force4), -(50 * force4), -(0 * force4));
+	AddBody(wall4, 0)->Push(-(50 * force4), -(35 * force4), -(0 * force4));
 	
 	
 
@@ -159,7 +165,7 @@ bool ModulePhysics3D::Start()
 		goal.height = 1;
 		goal.radius = 5;
 		goal.SetPos(0, 0, 0);
-		goal.color = Green;
+		goal.color = Rosa;
 		float force = 30.0f;
 		goal.SetRotation(120, rotate);
 
@@ -211,6 +217,7 @@ update_status ModulePhysics3D::PreUpdate(float dt)
 // ---------------------------------------------------------
 update_status ModulePhysics3D::Update(float dt)
 {
+	floor.Render();
 	wall1.Render();
 	wall2.Render();
 	wall3.Render();

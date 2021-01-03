@@ -32,3 +32,4 @@ extern Color Black;
 extern Color White;
 extern Color Sand;
 extern Color Sky;
+extern Color Rosa;
