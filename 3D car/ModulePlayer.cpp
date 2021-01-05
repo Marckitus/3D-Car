@@ -120,59 +120,61 @@ update_status ModulePlayer::Update(float dt)
 	position.z = vehicle->body->getCenterOfMassTransform().getOrigin().getZ() + 3;
 
 	App->camera->Position = position;
-
-	if(App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
+	if (App->physics->start == true)
 	{
-		if (acceleration > 0) acceleration = MAX_ACCELERATION;
-		else if (acceleration <= 0) acceleration = (MAX_ACCELERATION + BRAKE_POWER);
-
-		if (vehicle->GetKmh() >= 100.0)
+		if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
 		{
-			acceleration = 0;
+			if (acceleration > 0) acceleration = MAX_ACCELERATION;
+			else if (acceleration <= 0) acceleration = (MAX_ACCELERATION + BRAKE_POWER);
+
+			if (vehicle->GetKmh() >= 100.0)
+			{
+				acceleration = 0;
+			}
 		}
-	}
-	if (App->input->GetKey(SDL_SCANCODE_L) == KEY_REPEAT)
-	{
-		if (cameray < 100) 	cameray++;
-	}
-	if (App->input->GetKey(SDL_SCANCODE_O) == KEY_REPEAT)
-	{
-		if(cameray > 30) cameray--;
-	}
-
-
-	if(App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
-	{
-		if(turn < TURN_DEGREES)
-			turn +=  TURN_DEGREES;
-	}
-
-	if(App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
-	{
-		if(turn > -TURN_DEGREES)
-			turn -= TURN_DEGREES;
-	}
-
-	if(App->input->GetKey(SDL_SCANCODE_RSHIFT) == KEY_REPEAT)
-	{
-		brake = BRAKE_POWER;
-
-	}
-	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
-	{
-		if (acceleration >= 0) acceleration = -(MAX_ACCELERATION + BRAKE_POWER);
-		else if (acceleration < 0) acceleration = -(MAX_ACCELERATION - 200);
-
-		if (vehicle->GetKmh() <= -80.0)
+		if (App->input->GetKey(SDL_SCANCODE_L) == KEY_REPEAT)
 		{
-			acceleration = 0;
+			if (cameray < 100) 	cameray++;
 		}
-	}
-	vehicle->ApplyEngineForce(acceleration);
-	vehicle->Turn(turn);
-	vehicle->Brake(brake);
+		if (App->input->GetKey(SDL_SCANCODE_O) == KEY_REPEAT)
+		{
+			if (cameray > 30) cameray--;
+		}
 
-	vehicle->Render();
+
+		if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
+		{
+			if (turn < TURN_DEGREES)
+				turn += TURN_DEGREES;
+		}
+
+		if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
+		{
+			if (turn > -TURN_DEGREES)
+				turn -= TURN_DEGREES;
+		}
+
+		if (App->input->GetKey(SDL_SCANCODE_RSHIFT) == KEY_REPEAT)
+		{
+			brake = BRAKE_POWER;
+
+		}
+		if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
+		{
+			if (acceleration >= 0) acceleration = -(MAX_ACCELERATION + BRAKE_POWER);
+			else if (acceleration < 0) acceleration = -(MAX_ACCELERATION - 200);
+
+			if (vehicle->GetKmh() <= -80.0)
+			{
+				acceleration = 0;
+			}
+		}
+		vehicle->ApplyEngineForce(acceleration);
+		vehicle->Turn(turn);
+		vehicle->Brake(brake);
+
+		vehicle->Render();
+	}
 
 	char title[80];
 	sprintf_s(title, "%.1f Km/h", vehicle->GetKmh());

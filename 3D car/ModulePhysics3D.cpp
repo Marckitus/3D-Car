@@ -218,60 +218,66 @@ update_status ModulePhysics3D::Update(float dt)
 	obs8.Render();
 	goal.Render();
 
-
-	
-	if(App->input->GetKey(SDL_SCANCODE_F1) == KEY_DOWN)
-		debug = !debug;
-
-	if (App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
+	if (start == false)
 	{
-		srand(time(NULL));
-		sphereSpawn = rand() % 4;
-		Sphere s(2.5f);
-		switch (sphereSpawn)
-		{
-		case 0:
-			s.SetPos(40, 3, 40);
-			break;
-		case 1:
-			s.SetPos(-40, 3, 40);
-			break;
-		case 2:
-			s.SetPos(40, 3, -40);
-			break;
-		case 3:
-			s.SetPos(-40, 3, -40);
-			break;
-		default:
-			break;
-		}
-		s.color = Red;
-		float force = 30.0f;
-		AddBody(s, 1.0f)->Push(-(App->camera->Z.x * force), -(App->camera->Z.y * force), -(App->camera->Z.z * force));
-		s.Render();
+		if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN) start = true;
 	}
 
-	if(debug == true)
+	if (start == true)
 	{
-		world->debugDrawWorld();
+		if (App->input->GetKey(SDL_SCANCODE_F1) == KEY_DOWN)
+			debug = !debug;
 
-		// Render vehicles
-		p2List_item<PhysVehicle3D*>* item = vehicles.getFirst();
-		while(item)
+		if (App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
 		{
-			item->data->Render();
-			item = item->next;
-		}
-
-		
-		if (App->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN)
-		{
-			Cube s(20, 20, 20);
-			s.SetPos(0, 0, 0);
+			srand(time(NULL));
+			sphereSpawn = rand() % 4;
+			Sphere s(2.5f);
+			switch (sphereSpawn)
+			{
+			case 0:
+				s.SetPos(40, 3, 40);
+				break;
+			case 1:
+				s.SetPos(-40, 3, 40);
+				break;
+			case 2:
+				s.SetPos(40, 3, -40);
+				break;
+			case 3:
+				s.SetPos(-40, 3, -40);
+				break;
+			default:
+				break;
+			}
+			s.color = Red;
 			float force = 30.0f;
-			AddBody(s, 0)->Push(-(0 * force), -(0 * force), -(0 * force));
+			AddBody(s, 1.0f)->Push(-(App->camera->Z.x * force), -(App->camera->Z.y * force), -(App->camera->Z.z * force));
+			s.Render();
 		}
-	}
+
+		if (debug == true)
+		{
+			world->debugDrawWorld();
+
+			// Render vehicles
+			p2List_item<PhysVehicle3D*>* item = vehicles.getFirst();
+			while (item)
+			{
+				item->data->Render();
+				item = item->next;
+			}
+
+
+			if (App->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN)
+			{
+				Cube s(20, 20, 20);
+				s.SetPos(0, 0, 0);
+				float force = 30.0f;
+				AddBody(s, 0)->Push(-(0 * force), -(0 * force), -(0 * force));
+			}
+		}
+	}	
 
 	return UPDATE_CONTINUE;
 }
