@@ -54,10 +54,6 @@ public:
 	Sphere();
 	Sphere(float radius);
 	void InnerRender() const;
-	void SetRadius(float rad)
-	{
-		this->radius = rad;
-	}
 public:
 	float radius;
 };

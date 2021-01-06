@@ -73,7 +73,6 @@ bool ModulePhysics3D::Start()
 	floor.color = White;
 	AddBody(floor, 0)->Push(-(0 * force0), -(-4 * force0), -(0 * force0));
 	
-	
 	wall1.size.Set(2, 70, 100);
 	wall1.SetPos(-50, 35, 0);
 	float force1 = 30.0f;
@@ -140,18 +139,12 @@ bool ModulePhysics3D::Start()
 	float force11= 30.0f;
 	AddBody(obs7, 0)->Push(-(-25 * force11), -(0 * force11), -(25 * force11));
 
-
+	obs8.size.Set(10, 5, 10);
 	obs8.SetPos(25, 0, -25);
 	obs8.color = Sand;
 	float force12 = 30.0f;
 	AddBody(obs8, 0)->Push(-(25 * force12), -(0 * force12), -(-25 * force12));
-
-	s.SetRadius(15.0f);
-	Random(posx, posy, posz);
-	s.SetPos(posx, posy, posz);
-	s.color = Red;
-	float force = 30.0f;
-	AddBody(s, 1.0f)->Push(-(App->camera->Z.x * force), -(App->camera->Z.y * force), -(App->camera->Z.z * force));
+	
 	
 		vec3 rotate = (0, 0, 1);
 		goal.height = 1;
@@ -209,26 +202,59 @@ update_status ModulePhysics3D::PreUpdate(float dt)
 // ---------------------------------------------------------
 update_status ModulePhysics3D::Update(float dt)
 {
+	
+	floor.Render();
+	wall1.Render();
+	wall2.Render();
+	wall3.Render();
+	wall4.Render();
+	obs1.Render();
+	obs2.Render();
+	obs3.Render();
+	obs4.Render();
+	obs5.Render();
+	obs6.Render();
+	obs7.Render();
+	obs8.Render();
+	goal.Render();
+
+	if (start == false)
+	{
+		if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN) start = true;
+	}
+
 	if (start == true)
 	{
-		s.Render();
-		floor.Render();
-		wall1.Render();
-		wall2.Render();
-		wall3.Render();
-		wall4.Render();
-		obs1.Render();
-		obs2.Render();
-		obs3.Render();
-		obs4.Render();
-		obs5.Render();
-		obs6.Render();
-		obs7.Render();
-		obs8.Render();
-		goal.Render();
-		
 		if (App->input->GetKey(SDL_SCANCODE_F1) == KEY_DOWN)
 			debug = !debug;
+
+		if (App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
+		{
+			srand(time(NULL));
+			sphereSpawn = rand() % 4;
+			Sphere s(2.5f);
+			switch (sphereSpawn)
+			{
+			case 0:
+				s.SetPos(40, 3, 40);
+				break;
+			case 1:
+				s.SetPos(-40, 3, 40);
+				break;
+			case 2:
+				s.SetPos(40, 3, -40);
+				break;
+			case 3:
+				s.SetPos(-40, 3, -40);
+				break;
+			default:
+				break;
+			}
+			s.color = Red;
+			float force = 30.0f;
+			AddBody(s, 1.0f)->Push(-(App->camera->Z.x * force), -(App->camera->Z.y * force), -(App->camera->Z.z * force));
+			s.Render();
+		}
 
 		if (debug == true)
 		{
@@ -241,14 +267,17 @@ update_status ModulePhysics3D::Update(float dt)
 				item->data->Render();
 				item = item->next;
 			}
-		}
-	}
 
-	else if (start == false)
-	{
-		if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN) start = true;
-	}
-	
+
+			if (App->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN)
+			{
+				Cube s(20, 20, 20);
+				s.SetPos(0, 0, 0);
+				float force = 30.0f;
+				AddBody(s, 0)->Push(-(0 * force), -(0 * force), -(0 * force));
+			}
+		}
+	}	
 
 	return UPDATE_CONTINUE;
 }
@@ -508,35 +537,4 @@ void DebugDrawer::setDebugMode(int debugMode)
 int	 DebugDrawer::getDebugMode() const
 {
 	return mode;
-}
-
-float ModulePhysics3D::Random(float posx, float posy, float posz)
-{
-	srand(time(NULL));
-	sphereSpawn = rand() % 4;
-	switch (sphereSpawn)
-	{
-	case 0:
-		posx = 40;
-		posy = 3;
-		posz = 40;
-		break;
-	case 1:
-		posx = -40;
-		posy = 3;
-		posz = 40;
-		break;
-	case 2:
-		posx = 40;
-		posy = 3;
-		posz = -40;
-		break;
-	case 3:
-		posx = -40;
-		posy = 3;
-		posz = -40;
-		break;
-	default:
-		break;
-	}
 }

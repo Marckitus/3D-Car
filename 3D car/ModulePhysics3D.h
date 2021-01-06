@@ -17,7 +17,6 @@ struct VehicleInfo;
 class ModulePhysics3D : public Module
 {
 public:
-
 	ModulePhysics3D(Application* app, bool start_enabled = true);
 	~ModulePhysics3D();
 
@@ -28,7 +27,6 @@ public:
 	update_status PostUpdate(float dt);
 	bool CleanUp();
 
-	float Random(float posx, float posy, float posz);
 	PhysBody3D* AddBody(const Sphere& sphere, float mass = 1.0f);
 	PhysBody3D* AddBody(const Cube& cube, float mass = 1.0f);
 	PhysBody3D* AddBody(const Cylinder& cylinder, float mass = 1.0f);
@@ -38,9 +36,7 @@ public:
 	void AddConstraintHinge(PhysBody3D& bodyA, PhysBody3D& bodyB, const vec3& anchorA, const vec3& anchorB, const vec3& axisS, const vec3& axisB, bool disable_collision = false);
 
 	bool start = false;
-	float posx;
-	float posy;
-	float posz;
+
 
 
 private:
@@ -73,7 +69,6 @@ private:
 	Cube obs6;
 	Cube obs7;
 	Cube obs8;
-	Sphere s;
 	Cylinder goal;
 	int sphereSpawn;
 
