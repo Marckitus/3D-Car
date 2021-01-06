@@ -22,7 +22,7 @@ public:
 
 public:
 
-	int cameray = 100;
+	int cameray = 110;
 	VehicleInfo car;
 	PhysVehicle3D* vehicle;
 	float turn;

@@ -134,7 +134,7 @@ update_status ModulePlayer::Update(float dt)
 		}
 		if (App->input->GetKey(SDL_SCANCODE_L) == KEY_REPEAT)
 		{
-			if (cameray < 100) 	cameray++;
+			if (cameray < 110) 	cameray++;
 		}
 		if (App->input->GetKey(SDL_SCANCODE_O) == KEY_REPEAT)
 		{

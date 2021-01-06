@@ -70,7 +70,7 @@ bool ModulePhysics3D::Start()
 	floor.size.Set(100, 3, 100);
 	floor.SetPos(0, -1.4, 0);
 	float force0 = 30.0f;
-	floor.color = White;
+	floor.color = Sand;
 	AddBody(floor, 0)->Push(-(0 * force0), -(-4 * force0), -(0 * force0));
 	
 	wall1.size.Set(2, 70, 100);
@@ -146,15 +146,15 @@ bool ModulePhysics3D::Start()
 	AddBody(obs8, 0)->Push(-(25 * force12), -(0 * force12), -(-25 * force12));
 	
 	
-		vec3 rotate = (0, 0, 1);
-		goal.height = 1;
-		goal.radius = 5;
-		goal.SetPos(0, 0, 0);
-		goal.color = Rosa;
-		float force = 30.0f;
-		goal.SetRotation(120, rotate);
+	vec3 rotate = (0, 0, 1);
+	goal.height = 1;
+	goal.radius = 5;
+	goal.SetPos(0, 0, 0);
+	goal.color = Rosa;
+	float force = 30.0f;
+	goal.SetRotation(120, rotate);
 
-		AddBody(goal, 0)->Push(-(0 * force), -(0 * force), -(0 * force));
+	AddBody(goal, 0)->Push(-(0 * force), -(0 * force), -(0 * force));
 	
 	return true;
 }
