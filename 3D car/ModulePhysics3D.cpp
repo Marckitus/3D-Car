@@ -66,6 +66,7 @@ bool ModulePhysics3D::Start()
 		btRigidBody* body = new btRigidBody(rbInfo);
 		world->addRigidBody(body);
 	}
+	spher1.radius = 24.5f;
 
 	floor.size.Set(100, 3, 100);
 	floor.SetPos(0, -1.4, 0);
@@ -155,6 +156,14 @@ bool ModulePhysics3D::Start()
 	goal.SetRotation(120, rotate);
 
 	AddBody(goal, 0)->Push(-(0 * force), -(0 * force), -(0 * force));
+
+	spher1.radius = 3;
+	//Random();
+	spher1.SetPos(40,3,40);
+	spher1.color = Blue;
+	float force13 = 30.0f;
+	AddBody(spher1, 1.0f)->Push(-(0 * force13), -(0 * force13), -(0 * force13));
+	return true;
 	
 	return true;
 }
@@ -217,6 +226,7 @@ update_status ModulePhysics3D::Update(float dt)
 	obs7.Render();
 	obs8.Render();
 	goal.Render();
+	spher1.Render();
 
 	if (start == false)
 	{
@@ -227,34 +237,6 @@ update_status ModulePhysics3D::Update(float dt)
 	{
 		if (App->input->GetKey(SDL_SCANCODE_F1) == KEY_DOWN)
 			debug = !debug;
-
-		if (App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
-		{
-			srand(time(NULL));
-			sphereSpawn = rand() % 4;
-			Sphere s(2.5f);
-			switch (sphereSpawn)
-			{
-			case 0:
-				s.SetPos(40, 3, 40);
-				break;
-			case 1:
-				s.SetPos(-40, 3, 40);
-				break;
-			case 2:
-				s.SetPos(40, 3, -40);
-				break;
-			case 3:
-				s.SetPos(-40, 3, -40);
-				break;
-			default:
-				break;
-			}
-			s.color = Red;
-			float force = 30.0f;
-			AddBody(s, 1.0f)->Push(-(App->camera->Z.x * force), -(App->camera->Z.y * force), -(App->camera->Z.z * force));
-			s.Render();
-		}
 
 		if (debug == true)
 		{
@@ -267,15 +249,6 @@ update_status ModulePhysics3D::Update(float dt)
 				item->data->Render();
 				item = item->next;
 			}
-
-
-			if (App->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN)
-			{
-				Cube s(20, 20, 20);
-				s.SetPos(0, 0, 0);
-				float force = 30.0f;
-				AddBody(s, 0)->Push(-(0 * force), -(0 * force), -(0 * force));
-			}
 		}
 	}	
 
@@ -285,6 +258,7 @@ update_status ModulePhysics3D::Update(float dt)
 // ---------------------------------------------------------
 update_status ModulePhysics3D::PostUpdate(float dt)
 {
+
 	return UPDATE_CONTINUE;
 }
 
@@ -537,4 +511,29 @@ void DebugDrawer::setDebugMode(int debugMode)
 int	 DebugDrawer::getDebugMode() const
 {
 	return mode;
+}
+
+void ModulePhysics3D::Random()
+{
+	srand(time(NULL));
+	sphereSpawn = rand() % 4;
+	switch (sphereSpawn)
+	{
+	case 0:
+		spher1.SetPos(40, 3, 40);
+		break;
+	case 1:
+		spher1.SetPos(-40, 3, 40);
+		break;
+	case 2:
+		spher1.SetPos(40, 3, -40);
+		break;
+	case 3:
+		spher1.SetPos(-40, 3, -40);
+
+		break;
+	default:
+		break;
+	}
+
 }

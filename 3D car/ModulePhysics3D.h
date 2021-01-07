@@ -26,6 +26,7 @@ public:
 	update_status Update(float dt);
 	update_status PostUpdate(float dt);
 	bool CleanUp();
+	void Random();
 
 	PhysBody3D* AddBody(const Sphere& sphere, float mass = 1.0f);
 	PhysBody3D* AddBody(const Cube& cube, float mass = 1.0f);
@@ -70,6 +71,7 @@ private:
 	Cube obs7;
 	Cube obs8;
 	Cylinder goal;
+	Sphere spher1;
 	int sphereSpawn;
 
 };
