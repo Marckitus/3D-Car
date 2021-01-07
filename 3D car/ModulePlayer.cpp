@@ -19,7 +19,7 @@ bool ModulePlayer::Start()
 	LOG("Loading player");
 
 	// Car properties ----------------------------------------
-	car.chassis_size.Set(2, 3, 4);
+	car.chassis_size.Set(2, 2, 4);
 	car.chassis_offset.Set(0, 1.5, 0);
 	car.mass = 500.0f;
 	car.suspensionStiffness = 15.88f;
@@ -177,7 +177,7 @@ update_status ModulePlayer::Update(float dt)
 	}
 
 	char title[80];
-	sprintf_s(title, "%.1f Km/h", vehicle->GetKmh());
+	sprintf_s(title, " PRESS ENTER TO START %.1f Km/h", vehicle->GetKmh());
 	App->window->SetTitle(title);
 
 	return UPDATE_CONTINUE;
