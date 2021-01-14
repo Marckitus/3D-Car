@@ -70,6 +70,10 @@ private:
 	Cube obs6;
 	Cube obs7;
 	Cube obs8;
+	Cube vis1;
+	Cube vis2;
+	Cube vis3;
+	Cube vis4;
 	Cylinder goal;
 	Sphere spher1;
 	int sphereSpawn;

@@ -66,37 +66,69 @@ bool ModulePhysics3D::Start()
 		btRigidBody* body = new btRigidBody(rbInfo);
 		world->addRigidBody(body);
 	}
+	vec3 rotateZ = (0, 0, 1);
+	vec3 rotateY = (0, 1, 0);
+	vec3 rotateX = (1, 0, 0);
+
 	spher1.radius = 24.5f;
 
-	floor.size.Set(100, 3, 100);
+	floor.size.Set(200, 3, 200);
 	floor.SetPos(0, -1.4, 0);
 	float force0 = 30.0f;
 	floor.color = Sand;
 	AddBody(floor, 0)->Push(-(0 * force0), -(-4 * force0), -(0 * force0));
 	
-	wall1.size.Set(2, 70, 100);
-	wall1.SetPos(-50, 35, 0);
+	wall1.size.Set(2, 70, 200);
+	wall1.SetPos(-100, 35, 0);
 	float force1 = 30.0f;
 	wall1.color = Sky;
-	AddBody(wall1, 0)->Push(-(-50 * force1), -(35 * force1), -(0 * force1));
+	AddBody(wall1, 0)->Push(-(-100 * force1), -(35 * force1), -(0 * force1));
 
-	wall2.size.Set(100, 70, 2);
-	wall2.SetPos(0, 35, -50);
+	vis1.size.Set(2, 5, 200);
+	vis1.SetPos(-100, 3, 0);
+	vis1.color = Red;
+	float force15 = 30.0f;
+	//vis4.SetRotation(90, rotateY);
+	AddBody(vis1, 0)->Push(-(-100 * force15), -(3 * force15), -(0 * force15));
+
+	wall2.size.Set(200, 70, 2);
+	wall2.SetPos(0, 35, -100);
 	wall2.color = Sky;
 	float force2 = 30.0f;
-	AddBody(wall2, 0)->Push(-(0 * force2), -(35 * force2), -(-50 * force2));
+	AddBody(wall2, 0)->Push(-(0 * force2), -(35 * force2), -(-100 * force2));
 	
-	wall3.size.Set(100, 70, 2);
-	wall3.SetPos(0, 35, 50);
+	vis2.size.Set(200, 5, 2);
+	vis2.SetPos(0, 3, -100);
+	vis2.color = Red;
+	float force16 = 30.0f;
+	//vis4.SetRotation(90, rotateY);
+	AddBody(vis2, 0)->Push(-(0 * force16), -(3 * force16), -(-100 * force16));
+
+	wall3.size.Set(200, 70, 2);
+	wall3.SetPos(0, 35, 100);
 	wall3.color= Sky;
 	float force3 = 30.0f;
-	AddBody(wall3, 0)->Push(-(0 * force3), -(35 * force3), -(50 * force3));
+	AddBody(wall3, 0)->Push(-(0 * force3), -(35 * force3), -(100 * force3));
+
+	vis3.size.Set(200, 5, 2);
+	vis3.SetPos(0, 3, 100);
+	vis3.color = Red;
+	float force17 = 30.0f;
+	//vis4.SetRotation(90, rotateY);
+	AddBody(vis3, 0)->Push(-(0 * force17), -(35 * force17), -(100 * force17));
 	
-	wall4.size.Set(2, 70, 100);
-	wall4.SetPos(50, 35, 0);
+	wall4.size.Set(2, 70, 200);
+	wall4.SetPos(100, 35, 0);
 	wall4.color = Sky;
 	float force4 = 30.0f;
-	AddBody(wall4, 0)->Push(-(50 * force4), -(35 * force4), -(0 * force4));
+	AddBody(wall4, 0)->Push(-(100 * force4), -(35 * force4), -(0 * force4));
+
+	vis4.size.Set(2, 5, 200);
+	vis4.SetPos(100, 3, 0);
+	vis4.color = Red;
+	float force14 = 30.0f;
+	//vis4.SetRotation(90, rotateZ);
+	AddBody(vis4, 0)->Push(-(100 * force14), -(3 * force14), -(0 * force14));
 
 	obs1.size.Set(3, 5, 10);
 	obs1.SetPos(15, 0, 0);
@@ -147,15 +179,17 @@ bool ModulePhysics3D::Start()
 	AddBody(obs8, 0)->Push(-(25 * force12), -(0 * force12), -(-25 * force12));
 	
 	
-	vec3 rotate = (0, 0, 1);
 	goal.height = 1;
 	goal.radius = 5;
-	goal.SetPos(0, 0, 0);
+	goal.SetPos(0, 2, 0);
 	goal.color = Rosa;
 	float force = 30.0f;
-	goal.SetRotation(120, rotate);
+	goal.SetRotation(120, rotateZ);
 
-	AddBody(goal, 0)->Push(-(0 * force), -(0 * force), -(0 * force));
+	PhysBody3D* Goal = AddBody(goal, 0);
+
+
+
 
 	spher1.radius = 3;
 	//Random();
@@ -226,6 +260,10 @@ update_status ModulePhysics3D::Update(float dt)
 	obs7.Render();
 	obs8.Render();
 	goal.Render();
+	vis1.Render();
+	vis2.Render();
+	vis3.Render();
+	vis4.Render();
 	spher1.Render();
 
 	if (start == false)
