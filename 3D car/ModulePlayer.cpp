@@ -176,10 +176,19 @@ update_status ModulePlayer::Update(float dt)
 		vehicle->Render();
 	}
 
-	char title[80];
-	sprintf_s(title, " PRESS ENTER TO START %.1f Km/h", vehicle->GetKmh());
-	App->window->SetTitle(title);
 
+	if (comodin < 100)comodin++;
+	if (comodin == 100) {
+		time--;
+		comodin = 0;
+	}
+
+
+	char title[80];
+	sprintf_s(title, " PRESS ENTER TO START %.1f Km/h, Time left: %d   %d", vehicle->GetKmh(), time, comodin);
+	App->window->SetTitle(title);
+	
+	
 	return UPDATE_CONTINUE;
 }
 
