@@ -116,27 +116,46 @@ update_status ModulePlayer::Update(float dt)
 {
 	turn = acceleration = brake = 0.0f;
 
-	if(App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
+	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
 	{
-		acceleration = MAX_ACCELERATION;
+		if (acceleration > 0) acceleration = MAX_ACCELERATION;
+		else if (acceleration <= 0) acceleration = (MAX_ACCELERATION + BRAKE_POWER);
+
+		if (vehicle->GetKmh() >= 100.0)
+		{
+				acceleration = 0;
+		}
 	}
 
-	if(App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
+	if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
 	{
-		if(turn < TURN_DEGREES)
-			turn +=  TURN_DEGREES;
+		if (turn < TURN_DEGREES)
+			turn += TURN_DEGREES;
 	}
 
-	if(App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
+	if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
 	{
-		if(turn > -TURN_DEGREES)
+		if (turn > -TURN_DEGREES)
 			turn -= TURN_DEGREES;
 	}
 
-	if(App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
+	if (App->input->GetKey(SDL_SCANCODE_RSHIFT) == KEY_REPEAT)
 	{
 		brake = BRAKE_POWER;
+
 	}
+	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
+	{
+		if (acceleration >= 0) acceleration = -(MAX_ACCELERATION + BRAKE_POWER);
+		else if (acceleration < 0) acceleration = -(MAX_ACCELERATION - 200);
+
+		if (vehicle->GetKmh() <= -80.0)
+		{
+			acceleration = 0;
+		}
+	}
+
+
 
     // Apply controls to vehicle
 	vehicle->ApplyEngineForce(acceleration);
