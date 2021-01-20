@@ -80,5 +80,13 @@ update_status ModuleSceneIntro::PostUpdate(float dt)
 
 void ModuleSceneIntro::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
 {
+    if (body1->type == type::GOAL)
+    {
+        //
+    }
+    else
+    {
+
+    }
 }
 
