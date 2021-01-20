@@ -18,6 +18,7 @@ bool ModuleSceneIntro::Start()
 	LOG("Loading Intro assets");
     App->audio->PlayMusic("Assets/Sound/Initial D - Deja Vu.ogg");
     App->audio->PlayMusic("Assets/Sound/engine.wav");
+    Win = App->tex->Load("Assets/Textures/win.png");
 
 	bool ret = true;
     App->camera->Move(vec3(1.0f, 1.0f, 0.0f));
@@ -43,6 +44,7 @@ bool ModuleSceneIntro::CleanUp()
 // Update
 update_status ModuleSceneIntro::Update(float dt)
 {
+
     Plane p(0, 1, 0, 0);
 	p.axis = true;
 	p.Render();
@@ -57,6 +59,11 @@ update_status ModuleSceneIntro::Update(float dt)
         ball->body.SetPos(40, 3, -40);
     }
     ball->Update();
+
+    if (score == 3)
+    {
+        App->renderer3D->DrawTexture(Win, 0, 0, 0, 0, 0, 0, 0);
+    }
     
     if (App->player->time > 115) ball->color = Green;
 
