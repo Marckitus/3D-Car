@@ -26,6 +26,7 @@ bool ModuleSceneIntro::Start()
    
     ball = new Sphere(3, 0.75);
     ball->body.SetPos(50, 3, -50);
+    ball->body.type == BALL;
     primitives.PushBack(ball);
    
  	return ret;
@@ -80,5 +81,13 @@ update_status ModuleSceneIntro::PostUpdate(float dt)
 
 void ModuleSceneIntro::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
 {
+    if (body1->type == type::GOAL && body2->type == type::BALL)
+    {
+
+    }
+    else if (body2->type == type::GOAL && body1->type == type::BALL)
+    {
+
+    }
 }
 

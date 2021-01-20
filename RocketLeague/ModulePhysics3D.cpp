@@ -72,16 +72,16 @@ bool ModulePhysics3D::Start()
 	vec3 rotateY = (0, 1, 0);
 	vec3 rotateX = (1, 0, 0);
 
-	spher1.radius = 24.5f;
-
 	floor.size.Set(140, 3, 140);
 	floor.SetPos(0, -1.4, 0);
+	floor.body.type = WALL;
 	float force0 = 30.0f;
 	floor.color = Sand;
 	AddBody(floor, 0)->Push(-(0 * force0), -(-4 * force0), -(0 * force0));
 
 	wall1.size.Set(2, 70, 140);
 	wall1.SetPos(-70, 35, 0);
+	wall1.body.type = WALL;
 	float force1 = 30.0f;
 	wall1.color = Sky;
 	AddBody(wall1, 0)->Push(-(-100 * force1), -(35 * force1), -(0 * force1));
@@ -89,6 +89,7 @@ bool ModulePhysics3D::Start()
 	vis1.size.Set(2, 5, 140);
 	vis1.SetPos(-68, 3, 0);
 	vis1.color = Red;
+	vis1.body.type = WALL;
 	float force15 = 30.0f;
 	//vis4.SetRotation(90, rotateY);
 	AddBody(vis1, 0)->Push(-(-100 * force15), -(3 * force15), -(0 * force15));
@@ -96,12 +97,14 @@ bool ModulePhysics3D::Start()
 	wall2.size.Set(140, 70, 2);
 	wall2.SetPos(0, 35, -70);
 	wall2.color = Sky;
+	wall2.body.type = WALL;
 	float force2 = 30.0f;
 	AddBody(wall2, 0)->Push(-(0 * force2), -(35 * force2), -(-100 * force2));
 
 	vis2.size.Set(140, 5, 2);
 	vis2.SetPos(0, 3, -68);
 	vis2.color = Red;
+	floor.body.type = WALL;
 	float force16 = 30.0f;
 	//vis2.SetRotation(90, rotateX);
 	AddBody(vis2, 0)->Push(-(0 * force16), -(3 * force16), -(-100 * force16));
@@ -109,12 +112,14 @@ bool ModulePhysics3D::Start()
 	wall3.size.Set(140, 70, 2);
 	wall3.SetPos(0, 35, 70);
 	wall3.color = Sky;
+	wall3.body.type = WALL;
 	float force3 = 30.0f;
 	AddBody(wall3, 0)->Push(-(0 * force3), -(35 * force3), -(100 * force3));
 
 	vis3.size.Set(140, 5, 2);
 	vis3.SetPos(0, 3, 68);
 	vis3.color = Red;
+	vis3.body.type = WALL;
 	float force17 = 30.0f;
 	//vis4.SetRotation(90, rotateY);
 	AddBody(vis3, 0)->Push(-(0 * force17), -(35 * force17), -(100 * force17));
@@ -122,12 +127,14 @@ bool ModulePhysics3D::Start()
 	wall4.size.Set(2, 70, 140);
 	wall4.SetPos(70, 35, 0);
 	wall4.color = Sky;
+	wall4.body.type = WALL;
 	float force4 = 30.0f;
 	AddBody(wall4, 0)->Push(-(100 * force4), -(35 * force4), -(0 * force4));
 
 	vis4.size.Set(2, 5, 140);
 	vis4.SetPos(68, 3, 0);
 	vis4.color = Red;
+	vis4.body.type = WALL;
 	float force14 = 30.0f;
 	//vis4.SetRotation(90, rotateZ);
 	AddBody(vis4, 0)->Push(-(100 * force14), -(3 * force14), -(0 * force14));
@@ -135,48 +142,56 @@ bool ModulePhysics3D::Start()
 	obs1.size.Set(3, 8, 10);
 	obs1.SetPos(25, 0, 0);
 	obs1.color = F;
+	obs1.body.type = WALL;
 	float force5 = 30.0f;
 	AddBody(obs1, 0)->Push(-(25 * force5), -(0 * force5), -(0 * force5));
 
 	obs2.size.Set(3, 8, 10);
 	obs2.SetPos(-25, 0, 0);
 	obs2.color = F;
+	obs2.body.type = WALL;
 	float force6 = 30.0f;
 	AddBody(obs2, 0)->Push(-(-25 * force6), -(0 * force6), -(0 * force6));
 
 	obs3.size.Set(10, 8, 3);
 	obs3.SetPos(0, 0, -25);
 	obs3.color = F;
+	obs3.body.type = WALL;
 	float force7 = 30.0f;
 	AddBody(obs3, 0)->Push(-(0 * force7), -(0 * force7), -(-25 * force7));
 
 	obs4.size.Set(10, 8, 3);
 	obs4.SetPos(0, 0, 25);
 	obs4.color = F;
+	obs4.body.type = WALL;
 	float force8 = 30.0f;
 	AddBody(obs4, 0)->Push(-(0 * force8), -(0 * force8), -(25 * force8));
 
 	obs5.size.Set(10, 8, 10);
 	obs5.SetPos(35, 0, 35);
 	obs5.color = F;
+	obs5.body.type = WALL;
 	float force9 = 30.0f;
 	AddBody(obs5, 0)->Push(-(35 * force9), -(0 * force9), -(35 * force9));
 
 	obs6.size.Set(10, 8, 10);
 	obs6.SetPos(-35, 0, -35);
 	obs6.color = F;
+	obs6.body.type = WALL;
 	float force10 = 30.0f;
 	AddBody(obs6, 0)->Push(-(35 * force10), -(0 * force10), -(-35 * force10));
 
 	obs7.size.Set(10, 8, 10);
 	obs7.SetPos(-35, 0, 35);
 	obs7.color = F;
+	obs7.body.type = WALL;
 	float force11 = 30.0f;
 	AddBody(obs7, 0)->Push(-(-35 * force11), -(0 * force11), -(35 * force11));
 
 	obs8.size.Set(10, 8, 10);
 	obs8.SetPos(35, 0, -35);
 	obs8.color = F;
+	obs8.body.type = WALL;
 	float force12 = 30.0f;
 	AddBody(obs8, 0)->Push(-(35 * force12), -(0 * force12), -(-35 * force12));
 
@@ -184,6 +199,7 @@ bool ModulePhysics3D::Start()
 	goal.height = 3;
 	goal.radius = 5;
 	goal.SetPos(0, -0.5, 0);
+	goal.body.type = GOAL;
 	goal.color = Rosa;
 	float force = 30.0f;
 	goal.SetRotation(120, rotateZ);
