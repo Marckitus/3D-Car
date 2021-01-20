@@ -17,7 +17,7 @@ bool ModuleSceneIntro::Start()
 {
 	LOG("Loading Intro assets");
     App->audio->PlayMusic("Assets/Sound/Initial D - Deja Vu.ogg");
-  
+    App->audio->PlayMusic("Assets/Sound/engine.wav");
 
 	bool ret = true;
     App->camera->Move(vec3(1.0f, 1.0f, 0.0f));
@@ -61,9 +61,6 @@ update_status ModuleSceneIntro::Update(float dt)
     else if (App->player->time < 115 && App->player->time >110) ball->color = Naranja;
 
     else if (App->player->time < 110) ball->color = Red;
-  
-  
-
 
     for (uint n = 0; n < primitives.Count(); n++)
         primitives[n]->Update();
