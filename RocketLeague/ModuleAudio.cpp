@@ -15,6 +15,7 @@ ModuleAudio::~ModuleAudio()
 // Called before render is available
 bool ModuleAudio::Init()
 {
+
 	LOG("Loading Audio Mixer");
 	bool ret = true;
 	SDL_Init(0);
@@ -73,7 +74,7 @@ bool ModuleAudio::CleanUp()
 bool ModuleAudio::PlayMusic(const char* path, float fade_time)
 {
 	bool ret = true;
-	
+
 	if(music != NULL)
 	{
 		if(fade_time > 0.0f)
