@@ -20,7 +20,7 @@
 //ModulePhysics3D::ModulePhysics3D(Application* app, bool start_enabled) : Module(app, start_enabled)
 ModulePhysics3D::ModulePhysics3D(bool start_enabled) : Module(start_enabled), world(nullptr)
 {
-	debug = true;
+	debug = false;
 
 	collision_conf = new btDefaultCollisionConfiguration();
 	dispatcher = new btCollisionDispatcher(collision_conf);
@@ -74,59 +74,59 @@ bool ModulePhysics3D::Start()
 
 	spher1.radius = 24.5f;
 
-	floor.size.Set(150, 3, 150);
+	floor.size.Set(140, 3, 140);
 	floor.SetPos(0, -1.4, 0);
 	float force0 = 30.0f;
 	floor.color = Sand;
 	AddBody(floor, 0)->Push(-(0 * force0), -(-4 * force0), -(0 * force0));
 
-	wall1.size.Set(2, 60, 150);
-	wall1.SetPos(-75, 35, 0);
+	wall1.size.Set(2, 60, 140);
+	wall1.SetPos(-70, 35, 0);
 	float force1 = 30.0f;
 	wall1.color = Sky;
 	AddBody(wall1, 0)->Push(-(-100 * force1), -(35 * force1), -(0 * force1));
 
-	vis1.size.Set(2, 5, 150);
-	vis1.SetPos(-73, 3, 0);
+	vis1.size.Set(2, 5, 140);
+	vis1.SetPos(-68, 3, 0);
 	vis1.color = Red;
 	float force15 = 30.0f;
 	//vis4.SetRotation(90, rotateY);
 	AddBody(vis1, 0)->Push(-(-100 * force15), -(3 * force15), -(0 * force15));
 
-	wall2.size.Set(150, 60, 2);
-	wall2.SetPos(0, 35, -75);
+	wall2.size.Set(140, 60, 2);
+	wall2.SetPos(0, 35, -70);
 	wall2.color = Sky;
 	float force2 = 30.0f;
 	AddBody(wall2, 0)->Push(-(0 * force2), -(35 * force2), -(-100 * force2));
 
-	vis2.size.Set(150, 5, 2);
-	vis2.SetPos(0, 3, -73);
+	vis2.size.Set(140, 5, 2);
+	vis2.SetPos(0, 3, -68);
 	vis2.color = Red;
 	float force16 = 30.0f;
-	//vis2.SetRotation(90, rotateY);
+	vis2.SetRotation(90, rotateX);
 	AddBody(vis2, 0)->Push(-(0 * force16), -(3 * force16), -(-100 * force16));
 
-	wall3.size.Set(150, 60, 2);
-	wall3.SetPos(0, 35, 75);
+	wall3.size.Set(140, 60, 2);
+	wall3.SetPos(0, 35, 70);
 	wall3.color = Sky;
 	float force3 = 30.0f;
 	AddBody(wall3, 0)->Push(-(0 * force3), -(35 * force3), -(100 * force3));
 
-	vis3.size.Set(150, 5, 2);
-	vis3.SetPos(0, 3, 73);
+	vis3.size.Set(140, 5, 2);
+	vis3.SetPos(0, 3, 68);
 	vis3.color = Red;
 	float force17 = 30.0f;
 	//vis4.SetRotation(90, rotateY);
 	AddBody(vis3, 0)->Push(-(0 * force17), -(35 * force17), -(100 * force17));
 
-	wall4.size.Set(2, 60, 150);
-	wall4.SetPos(75, 35, 0);
+	wall4.size.Set(2, 60, 140);
+	wall4.SetPos(70, 35, 0);
 	wall4.color = Sky;
 	float force4 = 30.0f;
 	AddBody(wall4, 0)->Push(-(100 * force4), -(35 * force4), -(0 * force4));
 
-	vis4.size.Set(2, 5, 150);
-	vis4.SetPos(73, 3, 0);
+	vis4.size.Set(2, 5, 140);
+	vis4.SetPos(68, 3, 0);
 	vis4.color = Red;
 	float force14 = 30.0f;
 	//vis4.SetRotation(90, rotateZ);

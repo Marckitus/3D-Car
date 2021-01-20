@@ -165,34 +165,13 @@ update_status ModulePlayer::Update(float dt)
 	// Render vehicle
 	vehicle->Render();
 	
-
-	if (cameraMode = false) 
-	{
-		if (App->input->GetKey(SDL_SCANCODE_C) == KEY_REPEAT)
-		{
-			cameraMode = true;
-		}
-		// Move camera (overrides camera controls in ModuleCamera3D)
-		App->camera->Reference = vehicle->GetPos(); // Set camera reference to car's CM
-		App->camera->Position = vehicle->GetPos(); // Set camera to car's CM
-		App->camera->Position -= vehicle->GetFwdAxis() * 1000.0; // Move camera away on car's fwd axis
-		App->camera->Position += vec3{ 0.0, 1.0, 0.0 } *500.0; // Move camera up a little
-		App->camera->LookAt(vehicle->GetPos() + vec3{ 0.0, 1.0, 0.0 } *2.0); // Look at car's CM (a bit up)
-		App->camera->GetViewMatrix(); // Refresh camera viewpoint	
-	}	
-	else if (cameraMode = true) 
-	{		
-		if (App->input->GetKey(SDL_SCANCODE_C) == KEY_UP)
-		{
-			cameraMode = false;
-		}
-		vec3 position(0, 0, 0);
-		position = vehicle->GetPos();
+	vec3 position(0, 0, 0);
+	position = vehicle->GetPos();
 	
-		App->camera->LookAt(0);//vehicle->GetPos() + vec3{ 0.0, 1.0, 0.0 } *2.0); // Look at car's CM (a bit up)
-		App->camera->Position = vehicle->GetPos();
-		App->camera->Position.y += cameray;
-	}
+	App->camera->LookAt(0);//vehicle->GetPos() + vec3{ 0.0, 1.0, 0.0 } *2.0); // Look at car's CM (a bit up)
+	App->camera->Position = vehicle->GetPos();
+	App->camera->Position.y += cameray;
+
     // Info
 	char title[80];
 	sprintf_s(title, "Rocket League | Car speed: %.1f km/h", vehicle->GetKmh());
