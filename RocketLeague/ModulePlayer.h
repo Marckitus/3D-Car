@@ -2,6 +2,8 @@
 #include "Module.h"
 #include "Globals.h"
 #include "p2Point.h"
+#include "PhysVehicle3D.h"
+
 
 struct PhysVehicle3D;
 
@@ -21,9 +23,10 @@ public:
 	bool CleanUp();
 
 public:
-
+	int cameray = 150;
 	PhysVehicle3D* vehicle;
 	float turn;
 	float acceleration;
 	float brake;
+	bool cameraMode;
 };
