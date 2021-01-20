@@ -16,6 +16,14 @@ class Plane;
 
 class Primitive;
 
+enum type
+{
+	BALL,
+	GOAL,
+	WALL,
+	CAR
+};
+
 // =================================================
 struct PhysBody3D
 {
@@ -33,12 +41,15 @@ public:
 	void SetPos(float x, float y, float z);
 
     void SetBody(btCollisionShape* shape, Primitive* parent, float mass);
+	void SetAsSensor(bool is_sensor);
 
 private:
 	btRigidBody* body = nullptr;
     btCollisionShape* colShape;
     btDefaultMotionState* motionState;
 public:
+	bool is_sensor;
+	type type;
     Primitive* parentPrimitive;
 	p2List<Module*> collision_listeners;
 };

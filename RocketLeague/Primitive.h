@@ -75,6 +75,7 @@ public:
 public:
 	float radius;
 	float height;
+	bool goal = true;
 };
 
 // ============================================

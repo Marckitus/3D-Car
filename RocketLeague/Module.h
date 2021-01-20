@@ -49,5 +49,17 @@ public:
 	}
 
 	virtual void OnCollision(PhysBody3D* body1, PhysBody3D* body2)
-	{}
+	{
+		if (body1->is_sensor == true && body2->is_sensor == true)
+		{
+			if (body1->type == type::GOAL)
+			{
+				//set score 1, tp body 2
+			}
+			else
+			{
+				//set score 1, tp body 1
+			}
+		}
+	}
 };
