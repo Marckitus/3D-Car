@@ -20,8 +20,8 @@ bool ModuleSceneIntro::Start()
     App->camera->Move(vec3(1.0f, 1.0f, 0.0f));
     App->camera->LookAt(vec3(0, 0, 0));
     // Add a ball
-    Primitive* p = new Sphere(5, 2);
-    p->body.SetPos(0, 10, 15);
+    Primitive* p = new Sphere(3, 0.75);
+    p->body.SetPos(40, 3, -40);
     primitives.PushBack(p);
 
 	return ret;
