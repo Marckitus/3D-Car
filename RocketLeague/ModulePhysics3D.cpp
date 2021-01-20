@@ -197,7 +197,7 @@ bool ModulePhysics3D::Start()
 
 
 	goal.height = 3;
-	goal.radius = 5;
+	goal.radius = 8;
 	goal.SetPos(0, -0.5, 0);
 	goal.body.type = GOAL;
 	goal.color = Rosa;

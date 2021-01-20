@@ -154,6 +154,10 @@ update_status ModulePlayer::Update(float dt)
 			acceleration = 0;
 		}
 	}
+	if (App->input->GetKey(SDL_SCANCODE_P) == KEY_DOWN)
+	{
+		App->scene_intro->score++;
+	}
 
 
 

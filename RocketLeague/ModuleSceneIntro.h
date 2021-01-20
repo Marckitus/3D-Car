@@ -41,8 +41,9 @@ public:
 	PhysMotor3D* right_wheel;
 
 	Primitive* ball;
-
 	Primitive* ball2;
-	int score;
+	Primitive* ball3;
+
+	int score = 0;
 	bool create = false;
 };
