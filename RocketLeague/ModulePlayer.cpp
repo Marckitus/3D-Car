@@ -22,7 +22,7 @@ bool ModulePlayer::Start()
 	VehicleInfo car;
 
 	// Car properties ----------------------------------------
-	car.chassis_size.Set(4, 3, 5);
+	car.chassis_size.Set(4, 3, 6);
 	car.chassis_offset.Set(0, 1.5, 0);
 	car.mass = 100.00f;
 	car.suspensionStiffness = 15.88f;
@@ -98,7 +98,7 @@ bool ModulePlayer::Start()
 	car.wheels[3].steering = false;
 
 	vehicle = App->physics->AddVehicle(car);
-	vehicle->SetPos(-40, 4, -40);
+	vehicle->SetPos(0, 4, -60);
 	
 	return true;
 }
@@ -172,9 +172,15 @@ update_status ModulePlayer::Update(float dt)
 	App->camera->Position = vehicle->GetPos();
 	App->camera->Position.y += cameray;
 
+	if (comodin < 100)comodin++;
+	if (comodin == 100) {
+		time--;
+		comodin = 0;
+	}
+
     // Info
 	char title[80];
-	sprintf_s(title, "Rocket League | Car speed: %.1f km/h", vehicle->GetKmh());
+	sprintf_s(title, "Golf Kart | Car speed: %.1f km/h Time left: %d   %d", vehicle->GetKmh(), time, comodin);
 	App->window->SetTitle(title);
 
 	return UPDATE_CONTINUE;

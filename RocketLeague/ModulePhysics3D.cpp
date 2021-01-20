@@ -80,7 +80,7 @@ bool ModulePhysics3D::Start()
 	floor.color = Sand;
 	AddBody(floor, 0)->Push(-(0 * force0), -(-4 * force0), -(0 * force0));
 
-	wall1.size.Set(2, 60, 140);
+	wall1.size.Set(2, 70, 140);
 	wall1.SetPos(-70, 35, 0);
 	float force1 = 30.0f;
 	wall1.color = Sky;
@@ -93,7 +93,7 @@ bool ModulePhysics3D::Start()
 	//vis4.SetRotation(90, rotateY);
 	AddBody(vis1, 0)->Push(-(-100 * force15), -(3 * force15), -(0 * force15));
 
-	wall2.size.Set(140, 60, 2);
+	wall2.size.Set(140, 70, 2);
 	wall2.SetPos(0, 35, -70);
 	wall2.color = Sky;
 	float force2 = 30.0f;
@@ -106,7 +106,7 @@ bool ModulePhysics3D::Start()
 	//vis2.SetRotation(90, rotateX);
 	AddBody(vis2, 0)->Push(-(0 * force16), -(3 * force16), -(-100 * force16));
 
-	wall3.size.Set(140, 60, 2);
+	wall3.size.Set(140, 70, 2);
 	wall3.SetPos(0, 35, 70);
 	wall3.color = Sky;
 	float force3 = 30.0f;
@@ -119,7 +119,7 @@ bool ModulePhysics3D::Start()
 	//vis4.SetRotation(90, rotateY);
 	AddBody(vis3, 0)->Push(-(0 * force17), -(35 * force17), -(100 * force17));
 
-	wall4.size.Set(2, 60, 140);
+	wall4.size.Set(2, 70, 140);
 	wall4.SetPos(70, 35, 0);
 	wall4.color = Sky;
 	float force4 = 30.0f;
@@ -132,56 +132,56 @@ bool ModulePhysics3D::Start()
 	//vis4.SetRotation(90, rotateZ);
 	AddBody(vis4, 0)->Push(-(100 * force14), -(3 * force14), -(0 * force14));
 
-	obs1.size.Set(3, 5, 10);
-	obs1.SetPos(15, 0, 0);
-	obs1.color = Sand;
+	obs1.size.Set(3, 8, 10);
+	obs1.SetPos(25, 0, 0);
+	obs1.color = F;
 	float force5 = 30.0f;
-	AddBody(obs1, 0)->Push(-(15 * force5), -(0 * force5), -(0 * force5));
+	AddBody(obs1, 0)->Push(-(25 * force5), -(0 * force5), -(0 * force5));
 
-	obs2.size.Set(3, 5, 10);
-	obs2.SetPos(-15, 0, 0);
-	obs2.color = Sand;
+	obs2.size.Set(3, 8, 10);
+	obs2.SetPos(-25, 0, 0);
+	obs2.color = F;
 	float force6 = 30.0f;
-	AddBody(obs2, 0)->Push(-(-15 * force6), -(0 * force6), -(0 * force6));
+	AddBody(obs2, 0)->Push(-(-25 * force6), -(0 * force6), -(0 * force6));
 
-	obs3.size.Set(10, 5, 3);
-	obs3.SetPos(0, 0, -15);
-	obs3.color = Sand;
+	obs3.size.Set(10, 8, 3);
+	obs3.SetPos(0, 0, -25);
+	obs3.color = F;
 	float force7 = 30.0f;
-	AddBody(obs3, 0)->Push(-(0 * force7), -(0 * force7), -(-15 * force7));
+	AddBody(obs3, 0)->Push(-(0 * force7), -(0 * force7), -(-25 * force7));
 
-	obs4.size.Set(10, 5, 3);
-	obs4.SetPos(0, 0, 15);
-	obs4.color = Sand;
+	obs4.size.Set(10, 8, 3);
+	obs4.SetPos(0, 0, 25);
+	obs4.color = F;
 	float force8 = 30.0f;
-	AddBody(obs4, 0)->Push(-(0 * force8), -(0 * force8), -(15 * force8));
+	AddBody(obs4, 0)->Push(-(0 * force8), -(0 * force8), -(25 * force8));
 
-	obs5.size.Set(10, 5, 10);
-	obs5.SetPos(25, 0, 25);
-	obs5.color = Sand;
+	obs5.size.Set(10, 8, 10);
+	obs5.SetPos(35, 0, 35);
+	obs5.color = F;
 	float force9 = 30.0f;
-	AddBody(obs5, 0)->Push(-(25 * force9), -(0 * force9), -(25 * force9));
+	AddBody(obs5, 0)->Push(-(35 * force9), -(0 * force9), -(35 * force9));
 
-	obs6.size.Set(10, 5, 10);
-	obs6.SetPos(-25, 0, -25);
-	obs6.color = Sand;
+	obs6.size.Set(10, 8, 10);
+	obs6.SetPos(-35, 0, -35);
+	obs6.color = F;
 	float force10 = 30.0f;
-	AddBody(obs6, 0)->Push(-(25 * force10), -(0 * force10), -(-25 * force10));
+	AddBody(obs6, 0)->Push(-(35 * force10), -(0 * force10), -(-35 * force10));
 
-	obs7.size.Set(10, 5, 10);
-	obs7.SetPos(-25, 0, 25);
-	obs7.color = Sand;
+	obs7.size.Set(10, 8, 10);
+	obs7.SetPos(-35, 0, 35);
+	obs7.color = F;
 	float force11 = 30.0f;
-	AddBody(obs7, 0)->Push(-(-25 * force11), -(0 * force11), -(25 * force11));
+	AddBody(obs7, 0)->Push(-(-35 * force11), -(0 * force11), -(35 * force11));
 
-	obs8.size.Set(10, 5, 10);
-	obs8.SetPos(25, 0, -25);
-	obs8.color = Sand;
+	obs8.size.Set(10, 8, 10);
+	obs8.SetPos(35, 0, -35);
+	obs8.color = F;
 	float force12 = 30.0f;
-	AddBody(obs8, 0)->Push(-(25 * force12), -(0 * force12), -(-25 * force12));
+	AddBody(obs8, 0)->Push(-(35 * force12), -(0 * force12), -(-35 * force12));
 
 
-	goal.height = 1;
+	goal.height = 3;
 	goal.radius = 5;
 	goal.SetPos(0, -0.5, 0);
 	goal.color = Rosa;
