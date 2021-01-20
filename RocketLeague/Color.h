@@ -33,3 +33,5 @@ extern Color White;
 extern Color Sand;
 extern Color Sky;
 extern Color Rosa;
+extern Color Naranja;
+extern Color F;
