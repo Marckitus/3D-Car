@@ -18,7 +18,7 @@ bool ModuleSceneIntro::Start()
 	LOG("Loading Intro assets");
     App->audio->PlayMusic("Assets/Sound/Initial D - Deja Vu.ogg");
   
-
+	//Win = App->tex->Load("Assets/Textures/background.png");
 	bool ret = true;
     App->camera->Move(vec3(1.0f, 1.0f, 0.0f));
     App->camera->LookAt(vec3(0, 0, 0));
@@ -89,7 +89,7 @@ update_status ModuleSceneIntro::Update(float dt)
 		}
 	}
   
-
+	if(App->player->time==0)
 
     for (uint n = 0; n < primitives.Count(); n++)
         primitives[n]->Update();

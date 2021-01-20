@@ -44,6 +44,10 @@ public:
 	Primitive* ball2;
 	Primitive* ball3;
 
+	SDL_Texture* Win;
+	SDL_Texture* Lose;
+
+
 	int score = 0;
 	bool create = false;
 };
