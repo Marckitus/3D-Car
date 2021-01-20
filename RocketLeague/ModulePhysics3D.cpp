@@ -103,7 +103,7 @@ bool ModulePhysics3D::Start()
 	vis2.SetPos(0, 3, -68);
 	vis2.color = Red;
 	float force16 = 30.0f;
-	vis2.SetRotation(90, rotateX);
+	//vis2.SetRotation(90, rotateX);
 	AddBody(vis2, 0)->Push(-(0 * force16), -(3 * force16), -(-100 * force16));
 
 	wall3.size.Set(140, 60, 2);
