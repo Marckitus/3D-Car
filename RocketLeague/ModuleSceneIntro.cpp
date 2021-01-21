@@ -19,7 +19,6 @@ bool ModuleSceneIntro::Start()
     App->audio->PlayMusic("Assets/Sound/Initial D - Deja Vu.ogg");
 <<<<<<< HEAD
     App->audio->PlayMusic("Assets/Sound/engine.wav");
-    Win = App->tex->Load("Assets/Textures/win.png");
 
 =======
   
@@ -48,7 +47,6 @@ bool ModuleSceneIntro::CleanUp()
 // Update
 update_status ModuleSceneIntro::Update(float dt)
 {
-
     Plane p(0, 1, 0, 0);
 	p.axis = true;
 	p.Render();
@@ -68,11 +66,6 @@ update_status ModuleSceneIntro::Update(float dt)
     }
 <<<<<<< HEAD
     ball->Update();
-
-    if (score == 3)
-    {
-        App->renderer3D->DrawTexture(Win, 0, 0, 0, 0, 0, 0, 0);
-    }
     
     if (App->player->time > 115) ball->color = Green;
 =======

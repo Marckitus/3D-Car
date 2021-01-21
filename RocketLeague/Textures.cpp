@@ -18,7 +18,6 @@ Textures::~Textures()
 // Called before render is available
 bool Textures::Awake()
 {
-	LOG("Init Image library");
 	bool ret = true;
 
 	// Load support for the PNG image format
@@ -27,7 +26,6 @@ bool Textures::Awake()
 
 	if ((init & flags) != flags)
 	{
-		LOG("Could not initialize Image lib. IMG_Init: %s", IMG_GetError());
 		ret = false;
 	}
 
@@ -62,7 +60,7 @@ SDL_Texture* const Textures::Load(const char* path)
 	SDL_Texture* texture = NULL;
 	SDL_Surface* surface = IMG_Load(path);
 
-	if(path != NULL)
+	else
 	{
 		texture = LoadSurface(surface);
 		SDL_FreeSurface(surface);
