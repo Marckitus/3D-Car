@@ -29,5 +29,6 @@ public:
 	float acceleration;
 	float brake;
 	int time = 120;
-	int comodin = 99;
+	int comodin = 0;
+	int gameplay = false;
 };

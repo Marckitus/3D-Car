@@ -117,7 +117,12 @@ bool ModulePlayer::CleanUp()
 update_status ModulePlayer::Update(float dt)
 {
 	turn = acceleration = brake = 0.0f;
-
+	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN)
+	{
+		gameplay = true;
+	}
+	if(gameplay == true)
+	{
 	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
 	{
 		if (acceleration > 0) acceleration = MAX_ACCELERATION;
@@ -167,6 +172,7 @@ update_status ModulePlayer::Update(float dt)
 	vehicle->ApplyEngineForce(acceleration);
 	vehicle->Turn(turn);
 	vehicle->Brake(brake);
+	}
 
 	// Render vehicle
 	vehicle->Render();
@@ -177,11 +183,13 @@ update_status ModulePlayer::Update(float dt)
 	App->camera->LookAt(0);//vehicle->GetPos() + vec3{ 0.0, 1.0, 0.0 } *2.0); // Look at car's CM (a bit up)
 	App->camera->Position = vehicle->GetPos();
 	App->camera->Position.y += cameray;
-
-	if (comodin < 100)comodin++;
-	if (comodin == 100) {
-		time--;
-		comodin = 0;
+	if (gameplay == true) 
+	{
+		if (comodin < 60)comodin++;
+		if (comodin == 60) {
+			time--;
+			comodin = 0;
+		}
 	}
 
     // Info
