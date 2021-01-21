@@ -17,13 +17,7 @@ bool ModuleSceneIntro::Start()
 {
 	LOG("Loading Intro assets");
     App->audio->PlayMusic("Assets/Sound/Initial D - Deja Vu.ogg");
-<<<<<<< HEAD
-    App->audio->PlayMusic("Assets/Sound/engine.wav");
 
-=======
-  
-	//Win = App->tex->Load("Assets/Textures/background.png");
->>>>>>> parent of 39a7daa... Added Module Textures
 	bool ret = true;
     App->camera->Move(vec3(1.0f, 1.0f, 0.0f));
     App->camera->LookAt(vec3(0, 0, 0));
@@ -64,12 +58,6 @@ update_status ModuleSceneIntro::Update(float dt)
         create = true;
         ball->body.SetPos(40000, 3, -40);
     }
-<<<<<<< HEAD
-    ball->Update();
-    
-    if (App->player->time > 115) ball->color = Green;
-=======
->>>>>>> parent of 39a7daa... Added Module Textures
 
 
 	if (App->player->time > 60)
@@ -100,8 +88,8 @@ update_status ModuleSceneIntro::Update(float dt)
 		}
 	}
   
-	if(App->player->time==0)
-
+	if (App->player->time == 0)
+		ball->Update();
     for (uint n = 0; n < primitives.Count(); n++)
         primitives[n]->Update();
 
