@@ -201,6 +201,7 @@ bool ModulePhysics3D::Start()
 	goal.SetPos(0, -0.5, 0);
 	goal.body.type = GOAL;
 	goal.color = Rosa;
+	goal.body.collision_listeners.add(this);
 	float force = 30.0f;
 	goal.SetRotation(120, rotateZ);
 

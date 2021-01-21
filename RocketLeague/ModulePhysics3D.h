@@ -39,6 +39,7 @@ public:
 
 	void AddConstraintP2P(PhysBody3D& bodyA, PhysBody3D& bodyB, const vec3& anchorA, const vec3& anchorB);
 	void AddConstraintHinge(PhysBody3D& bodyA, PhysBody3D& bodyB, const vec3& anchorA, const vec3& anchorB, const vec3& axisS, const vec3& axisB, bool disable_collision = false);
+	Cylinder goal;
 
 private:
 
@@ -74,7 +75,6 @@ private:
 	Cube vis2;
 	Cube vis3;
 	Cube vis4;
-	Cylinder goal;
 	Sphere spher1;
 	int sphereSpawn;
 };

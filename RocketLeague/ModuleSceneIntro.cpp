@@ -3,6 +3,7 @@
 #include "ModuleSceneIntro.h"
 #include "Primitive.h"
 #include "PhysBody3D.h"
+#include "ModulePhysics3D.h"
 
 //ModuleSceneIntro::ModuleSceneIntro(Application* app, bool start_enabled) : Module(app, start_enabled)
 ModuleSceneIntro::ModuleSceneIntro(bool start_enabled) : Module(start_enabled)
@@ -26,26 +27,32 @@ bool ModuleSceneIntro::Start()
     ball = new Sphere(3, 0.75);
 	ball->body.SetPos(40000, 3, -40);
 	ball->body.type = BALL;
+	ball->body.collision_listeners.add(this);
     primitives.PushBack(ball);
 	ball2 = new Sphere(3, 0.75);
 	ball2->body.SetPos(-5000, 3, 0);
 	ball2->body.type = BALL;
+	ball2->body.collision_listeners.add(this);
 	primitives.PushBack(ball2);
 	ball3 = new Sphere(3, 0.75);
 	ball3->body.SetPos(5000, 3, 0);
 	ball3->body.type = BALL;
+	ball3->body.collision_listeners.add(this);
 	primitives.PushBack(ball3);
 	ball4 = new Sphere(3, 0.75);
 	ball4->body.SetPos(6000, 3, 0);
 	ball4->body.type = BALL;
 	primitives.PushBack(ball4);
+	ball4->body.collision_listeners.add(this);
 	ball5 = new Sphere(3, 0.75);
 	ball5->body.SetPos(7000, 3, 0);
 	ball5->body.type = BALL;
+	ball5->body.collision_listeners.add(this);
 	primitives.PushBack(ball5);
 	ball6 = new Sphere(3, 0.75);
 	ball6->body.SetPos(8000, 3, 0);
 	ball6->body.type = BALL;
+	ball6->body.collision_listeners.add(this);
 	primitives.PushBack(ball6);
    
  	return ret;
@@ -176,11 +183,11 @@ update_status ModuleSceneIntro::PostUpdate(float dt)
 
 void ModuleSceneIntro::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
 {
-	if(body1->type == GOAL && body2->type == BALL)
+	if(body1 == &App->physics->goal.body && body2 == &ball->body)
 	{
 
 	}
-	else if (body1->type == BALL && body2->type == GOAL)
+	else if (body2 == &App->physics->goal.body && body1 == &ball->body)
 	{
 
 	}
