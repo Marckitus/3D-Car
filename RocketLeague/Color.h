@@ -35,3 +35,4 @@ extern Color Sky;
 extern Color Rosa;
 extern Color Naranja;
 extern Color F;
+extern Color Morado;

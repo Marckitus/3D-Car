@@ -75,125 +75,89 @@ bool ModulePhysics3D::Start()
 	floor.size.Set(140, 3, 140);
 	floor.SetPos(0, -1.4, 0);
 	floor.body.type = WALL;
-	float force0 = 30.0f;
 	floor.color = Sand;
-	AddBody(floor, 0)->Push(-(0 * force0), -(-4 * force0), -(0 * force0));
+	AddBody(floor, 0);
 
 	wall1.size.Set(2, 70, 140);
 	wall1.SetPos(-70, 35, 0);
 	wall1.body.type = WALL;
-	float force1 = 30.0f;
 	wall1.color = Sky;
-	AddBody(wall1, 0)->Push(-(-100 * force1), -(35 * force1), -(0 * force1));
+	AddBody(wall1, 0);
 
-	vis1.size.Set(2, 5, 140);
-	vis1.SetPos(-68, 3, 0);
-	vis1.color = Red;
-	vis1.body.type = WALL;
-	float force15 = 30.0f;
-	//vis4.SetRotation(90, rotateY);
-	AddBody(vis1, 0)->Push(-(-100 * force15), -(3 * force15), -(0 * force15));
+	
 
 	wall2.size.Set(140, 70, 2);
 	wall2.SetPos(0, 35, -70);
 	wall2.color = Sky;
 	wall2.body.type = WALL;
-	float force2 = 30.0f;
-	AddBody(wall2, 0)->Push(-(0 * force2), -(35 * force2), -(-100 * force2));
+	AddBody(wall2, 0);
 
-	vis2.size.Set(140, 5, 2);
-	vis2.SetPos(0, 3, -68);
-	vis2.color = Red;
-	floor.body.type = WALL;
-	float force16 = 30.0f;
-	//vis2.SetRotation(90, rotateX);
-	AddBody(vis2, 0)->Push(-(0 * force16), -(3 * force16), -(-100 * force16));
+	
 
 	wall3.size.Set(140, 70, 2);
 	wall3.SetPos(0, 35, 70);
 	wall3.color = Sky;
 	wall3.body.type = WALL;
-	float force3 = 30.0f;
-	AddBody(wall3, 0)->Push(-(0 * force3), -(35 * force3), -(100 * force3));
+	AddBody(wall3, 0);
 
-	vis3.size.Set(140, 5, 2);
-	vis3.SetPos(0, 3, 68);
-	vis3.color = Red;
-	vis3.body.type = WALL;
-	float force17 = 30.0f;
-	//vis4.SetRotation(90, rotateY);
-	AddBody(vis3, 0)->Push(-(0 * force17), -(35 * force17), -(100 * force17));
+	
 
 	wall4.size.Set(2, 70, 140);
 	wall4.SetPos(70, 35, 0);
 	wall4.color = Sky;
 	wall4.body.type = WALL;
-	float force4 = 30.0f;
-	AddBody(wall4, 0)->Push(-(100 * force4), -(35 * force4), -(0 * force4));
+	AddBody(wall4, 0);
 
-	vis4.size.Set(2, 5, 140);
-	vis4.SetPos(68, 3, 0);
-	vis4.color = Red;
-	vis4.body.type = WALL;
-	float force14 = 30.0f;
-	//vis4.SetRotation(90, rotateZ);
-	AddBody(vis4, 0)->Push(-(100 * force14), -(3 * force14), -(0 * force14));
+	
 
 	obs1.size.Set(3, 8, 10);
 	obs1.SetPos(25, 0, 0);
 	obs1.color = F;
 	obs1.body.type = WALL;
-	float force5 = 30.0f;
-	AddBody(obs1, 0)->Push(-(25 * force5), -(0 * force5), -(0 * force5));
+	AddBody(obs1, 0);
 
 	obs2.size.Set(3, 8, 10);
 	obs2.SetPos(-25, 0, 0);
 	obs2.color = F;
 	obs2.body.type = WALL;
-	float force6 = 30.0f;
-	AddBody(obs2, 0)->Push(-(-25 * force6), -(0 * force6), -(0 * force6));
+	AddBody(obs2, 0);
+
 
 	obs3.size.Set(10, 8, 3);
 	obs3.SetPos(0, 0, -25);
 	obs3.color = F;
 	obs3.body.type = WALL;
-	float force7 = 30.0f;
-	AddBody(obs3, 0)->Push(-(0 * force7), -(0 * force7), -(-25 * force7));
+	AddBody(obs3, 0);
 
 	obs4.size.Set(10, 8, 3);
 	obs4.SetPos(0, 0, 25);
 	obs4.color = F;
 	obs4.body.type = WALL;
-	float force8 = 30.0f;
-	AddBody(obs4, 0)->Push(-(0 * force8), -(0 * force8), -(25 * force8));
+	AddBody(obs4, 0);
 
 	obs5.size.Set(10, 8, 10);
 	obs5.SetPos(35, 0, 35);
 	obs5.color = F;
 	obs5.body.type = WALL;
-	float force9 = 30.0f;
-	AddBody(obs5, 0)->Push(-(35 * force9), -(0 * force9), -(35 * force9));
+	AddBody(obs5, 0);
 
 	obs6.size.Set(10, 8, 10);
 	obs6.SetPos(-35, 0, -35);
 	obs6.color = F;
 	obs6.body.type = WALL;
-	float force10 = 30.0f;
-	AddBody(obs6, 0)->Push(-(35 * force10), -(0 * force10), -(-35 * force10));
+	AddBody(obs6, 0);
 
 	obs7.size.Set(10, 8, 10);
 	obs7.SetPos(-35, 0, 35);
 	obs7.color = F;
 	obs7.body.type = WALL;
-	float force11 = 30.0f;
-	AddBody(obs7, 0)->Push(-(-35 * force11), -(0 * force11), -(35 * force11));
+	AddBody(obs7, 0);
 
 	obs8.size.Set(10, 8, 10);
 	obs8.SetPos(35, 0, -35);
 	obs8.color = F;
 	obs8.body.type = WALL;
-	float force12 = 30.0f;
-	AddBody(obs8, 0)->Push(-(35 * force12), -(0 * force12), -(-35 * force12));
+	AddBody(obs8, 0);
 
 
 	goal.height = 3;
@@ -202,10 +166,81 @@ bool ModulePhysics3D::Start()
 	goal.body.type = GOAL;
 	goal.color = Rosa;
 	goal.body.collision_listeners.add(this);
-	float force = 30.0f;
 	goal.SetRotation(120, rotateZ);
 
 	PhysBody3D* Goal = AddBody(goal, 0);
+
+
+
+
+	//derecha
+
+	// Set transformation matrix for vis1 ramp:
+	btTransform t; // Bullet's transf matrix class. Very easy to work with
+	t.setOrigin(btVector3(-65.0, 1.0, 0.0)); // Position (x,y,z) in world ref
+	t.setRotation(btQuaternion(0.0, 0.0, 45.0)); // Rotation angles (yaw, pitch, roll) in local ref
+	btScalar matrixb[16]; // This is what Bullet provides
+	mat4x4 matrixp; // This is what Primitive wants
+	t.getOpenGLMatrix(matrixb); // Recover transf matrix from Bullet class
+	for (int i = 0; i < 16; i++) matrixp[i] = matrixb[i]; // Copy transf matrix items from Bullet to Primitive class vars
+														  
+	// Create vis1 and apply transf matrix above
+	vis1.size.Set(2, 10, 140);
+	vis1.color = Red;
+	vis1.body.type = WALL;
+	vis1.transform = matrixp; // Apply transf matrix to Primitive
+	AddBody(vis1, 0.0);
+
+
+	//izquierda
+
+	btTransform t2;
+	t2.setOrigin(btVector3(65.0, 1.0, 0.0)); // Position (x,y,z) in world ref
+	t2.setRotation(btQuaternion(0.0, 0.0, -45.0)); // Rotation angles (yaw, pitch, roll) in local ref
+	btScalar matrixb2[16]; // This is what Bullet provides
+	mat4x4 matrixp2; // This is what Primitive wants
+	t2.getOpenGLMatrix(matrixb2); // Recover transf matrix from Bullet class
+	for (int i = 0; i < 16; i++) matrixp2[i] = matrixb2[i]; // Copy transf matrix items from Bullet to Primitive class vars
+
+	vis2.size.Set(2, 10, 140);
+	vis2.color = Red;
+	floor.body.type = WALL;
+	vis2.transform = matrixp2;
+	AddBody(vis2, 0);
+
+
+	//arriba
+
+	btTransform t3;
+	t3.setOrigin(btVector3(0.0, 1.0, 65.0)); // Position (x,y,z) in world ref
+	t3.setRotation(btQuaternion(0.0, 45.0, 0.0)); // Rotation angles (yaw, pitch, roll) in local ref
+	btScalar matrixb3[16]; // This is what Bullet provides
+	mat4x4 matrixp3; // This is what Primitive wants
+	t3.getOpenGLMatrix(matrixb3); // Recover transf matrix from Bullet class
+	for (int i = 0; i < 16; i++) matrixp3[i] = matrixb3[i]; // Copy transf matrix items from Bullet to Primitive class vars
+
+	vis3.size.Set(140, 10, 2);
+	vis3.color = Red;
+	vis3.body.type = WALL;
+	vis3.transform = matrixp3;
+	AddBody(vis3, 0);
+
+
+	//abajo
+
+	btTransform t4;
+	t4.setOrigin(btVector3(0.0, 1.0, -65.0)); // Position (x,y,z) in world ref
+	t4.setRotation(btQuaternion(0.0, -45.0, 0.0)); // Rotation angles (yaw, pitch, roll) in local ref
+	btScalar matrixb4[16]; // This is what Bullet provides
+	mat4x4 matrixp4; // This is what Primitive wants
+	t4.getOpenGLMatrix(matrixb4); // Recover transf matrix from Bullet class
+	for (int i = 0; i < 16; i++) matrixp4[i] = matrixb4[i]; // Copy transf matrix items from Bullet to Primitive class vars
+
+	vis4.size.Set(140, 10, 2);
+	vis4.color = Red;
+	vis4.body.type = WALL;
+	vis4.transform = matrixp4;
+	AddBody(vis4, 0);
 
 	return true;
 }

@@ -121,11 +121,19 @@ update_status ModulePlayer::Update(float dt)
 	{
 		gameplay = true;
 		vehicle->SetPos(0, 4, -60);
-		if (time == 0) 
-		{
-			time = 120;
-			App->scene_intro->score = 0;
-		}
+		time = 120;
+		App->scene_intro->score = 0;
+		App->scene_intro->ball->body.SetPos(50, 3, 0);
+		App->scene_intro->ball2->body.SetPos(50000, 3, -40);
+		App->scene_intro->ball3->body.SetPos(4000, 3, -40);
+		App->scene_intro->ball4->body.SetPos(41000, 3, -40);
+		App->scene_intro->ball5->body.SetPos(53000, 3, -40);
+		App->scene_intro->ball6->body.SetPos(4400, 3, -40);
+		App->scene_intro->firstRound = false;
+		App->scene_intro->secondRound = false;
+		App->scene_intro->thirdRound = false;
+		App->scene_intro->forthRound = false;
+		
 	}
 	if(gameplay == true)
 	{

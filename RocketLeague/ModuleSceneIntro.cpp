@@ -153,16 +153,8 @@ update_status ModuleSceneIntro::Update(float dt)
 	{
 		ball->Update();
 		App->player->gameplay = false;
-		firstRound = false;
-		secondRound = false;
-		thirdRound = false;
-		forthRound = false;
-		ball->body.SetPos(40000, 3, -40);
-		ball2->body.SetPos(50000, 3, -40);
-		ball3->body.SetPos(4000, 3, -40);
-		ball4->body.SetPos(41000, 3, -40);
-		ball5->body.SetPos(53000, 3, -40);
-		ball6->body.SetPos(4400, 3, -40);
+		
+		
 	}
 
 	for (uint n = 0; n < primitives.Count(); n++)
