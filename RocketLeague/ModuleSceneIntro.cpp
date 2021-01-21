@@ -25,6 +25,7 @@ bool ModuleSceneIntro::Start()
    
     ball = new Sphere(3, 0.75);
     ball->body.SetPos(50, 3, 0);
+	ball->body.type = BALL;
     primitives.PushBack(ball);
    
  	return ret;
@@ -57,6 +58,8 @@ update_status ModuleSceneIntro::Update(float dt)
 		primitives.PushBack(ball3);
         create = true;
         ball->body.SetPos(40000, 3, -40);
+		ball2->body.type = BALL;
+		ball3->body.type = BALL;
     }
 
 
@@ -81,7 +84,7 @@ update_status ModuleSceneIntro::Update(float dt)
 	else if (App->player->time < 20)
 	{
 		ball->color = Red;
-		if (create = true)
+		if (create == true)
 		{
 			ball2->color = Red;
 			ball3->color = Red;
@@ -108,5 +111,13 @@ update_status ModuleSceneIntro::PostUpdate(float dt)
 
 void ModuleSceneIntro::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
 {
+	if(body1->type == GOAL && body2->type == BALL)
+	{
+
+	}
+	else if (body1->type == BALL && body2->type == GOAL)
+	{
+
+	}
 }
 

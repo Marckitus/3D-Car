@@ -99,6 +99,8 @@ bool ModulePlayer::Start()
 
 	vehicle = App->physics->AddVehicle(car);
 	vehicle->SetPos(0, 4, -60);
+	vehicle->collision_listeners.add(this);
+	vehicle->GetBody()->setUserPointer(vehicle);
 	
 	return true;
 }
