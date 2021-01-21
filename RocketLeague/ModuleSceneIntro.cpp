@@ -24,9 +24,29 @@ bool ModuleSceneIntro::Start()
     // Add a ball
    
     ball = new Sphere(3, 0.75);
-    ball->body.SetPos(50, 3, 0);
+	ball->body.SetPos(40000, 3, -40);
 	ball->body.type = BALL;
     primitives.PushBack(ball);
+	ball2 = new Sphere(3, 0.75);
+	ball2->body.SetPos(-5000, 3, 0);
+	ball2->body.type = BALL;
+	primitives.PushBack(ball2);
+	ball3 = new Sphere(3, 0.75);
+	ball3->body.SetPos(5000, 3, 0);
+	ball3->body.type = BALL;
+	primitives.PushBack(ball3);
+	ball4 = new Sphere(3, 0.75);
+	ball4->body.SetPos(6000, 3, 0);
+	ball4->body.type = BALL;
+	primitives.PushBack(ball4);
+	ball5 = new Sphere(3, 0.75);
+	ball5->body.SetPos(7000, 3, 0);
+	ball5->body.type = BALL;
+	primitives.PushBack(ball5);
+	ball6 = new Sphere(3, 0.75);
+	ball6->body.SetPos(8000, 3, 0);
+	ball6->body.type = BALL;
+	primitives.PushBack(ball6);
    
  	return ret;
 }
@@ -45,56 +65,101 @@ update_status ModuleSceneIntro::Update(float dt)
     Plane p(0, 1, 0, 0);
 	p.axis = true;
 	p.Render();
+	if(App->player->time > 0)
+	{
+		if (firstRound == false)
+		{
+			ball->body.SetPos(50, 3, 0);
+			firstRound = true;
+		}
+		if (score == 1 && secondRound == false)
+		{
+			secondRound = true;
+			ball2->body.SetPos(-50, 3, 0);
+			ball3->body.SetPos(50, 3, 0);
+			ball->body.SetPos(40000, 3, -40);
+			App->player->time = 120;
+		}
+		if (score == 3 && thirdRound == false)
+		{
+			thirdRound = true;
+			ball4->body.SetPos(-50, 3, 0);
+			ball5->body.SetPos(50, 3, 0);
+			ball6->body.SetPos(0, 3, 50);
+			ball2->body.SetPos(50000, 3, -40);
+			ball3->body.SetPos(4000, 3, -40);
+			App->player->time = 120;
+		}
 
-    if (score == 1 && create == false ) 
-    {
-        App->player->time = 120;
-        ball2 = new Sphere(3, 0.75);
-        ball2->body.SetPos(-50, 3, 0);
-        primitives.PushBack(ball2);
-		App->player->time = 120;
-		ball3 = new Sphere(3, 0.75);
-		ball3->body.SetPos(50, 3, 0);
-		primitives.PushBack(ball3);
-        create = true;
-        ball->body.SetPos(40000, 3, -40);
-		ball2->body.type = BALL;
-		ball3->body.type = BALL;
-    }
-
-
+	}
+	else
+	{
+		App->player->gameplay = false;
+	}
 	if (App->player->time > 60)
 	{
 		ball->color = Green;
-		if (create == true)
+		if (secondRound == true)
 		{
 			ball2->color = Green;
 			ball3->color = Green;
+		}
+		if (thirdRound == true)
+		{
+			ball4->color = Green;
+			ball5->color = Green;
+			ball6->color = Green;
 		}
 	}
 	else if (App->player->time < 60 && App->player->time >20)
 	{
 		ball->color = Naranja;
-		if (create == true)
+		if (secondRound == true)
 		{
 			ball2->color = Naranja;
 			ball3->color = Naranja;
+		}
+		if (thirdRound == true)
+		{
+			ball4->color = Naranja;
+			ball5->color = Naranja;
+			ball6->color = Naranja;
 		}
 	}
 	else if (App->player->time < 20)
 	{
 		ball->color = Red;
-		if (create == true)
+		if (secondRound == true)
 		{
 			ball2->color = Red;
 			ball3->color = Red;
 		}
+		if (thirdRound == true)
+		{
+			ball4->color = Red;
+			ball5->color = Red;
+			ball6->color = Red;
+		}
 	}
-  
+
 	if (App->player->time == 0)
+	{
 		ball->Update();
-    for (uint n = 0; n < primitives.Count(); n++)
-        primitives[n]->Update();
+		App->player->gameplay = false;
+		firstRound = false;
+		secondRound = false;
+		thirdRound = false;
+		forthRound = false;
+		ball->body.SetPos(40000, 3, -40);
+		ball2->body.SetPos(50000, 3, -40);
+		ball3->body.SetPos(4000, 3, -40);
+		ball4->body.SetPos(41000, 3, -40);
+		ball5->body.SetPos(53000, 3, -40);
+		ball6->body.SetPos(4400, 3, -40);
+	}
+
+	for (uint n = 0; n < primitives.Count(); n++)
+		primitives[n]->Update();
 
 	return UPDATE_CONTINUE;
 }

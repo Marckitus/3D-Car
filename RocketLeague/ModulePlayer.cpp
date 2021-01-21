@@ -120,6 +120,12 @@ update_status ModulePlayer::Update(float dt)
 	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN)
 	{
 		gameplay = true;
+		vehicle->SetPos(0, 4, -60);
+		if (time == 0) 
+		{
+			time = 120;
+			App->scene_intro->score = 0;
+		}
 	}
 	if(gameplay == true)
 	{
@@ -194,7 +200,7 @@ update_status ModulePlayer::Update(float dt)
 
     // Info
 	char title[80];
-	sprintf_s(title, "Golf Kart | Car speed: %.1f km/h Time left: %d   %d", vehicle->GetKmh(), time, comodin);
+	sprintf_s(title, "Golf Kart | Car speed: %.1f km/h Time left: %d   %d   Points: %d", vehicle->GetKmh(), time, comodin, App->scene_intro->score);
 	App->window->SetTitle(title);
 
 	return UPDATE_CONTINUE;

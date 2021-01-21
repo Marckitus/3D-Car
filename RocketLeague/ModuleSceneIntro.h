@@ -43,11 +43,17 @@ public:
 	Primitive* ball;
 	Primitive* ball2;
 	Primitive* ball3;
+	Primitive* ball4;
+	Primitive* ball5;
+	Primitive* ball6;
 
 	SDL_Texture* Win;
 	SDL_Texture* Lose;
 
 
 	int score = 0;
-	bool create = false;
+	bool firstRound = false;
+	bool secondRound = false;
+	bool thirdRound = false;
+	bool forthRound = false;
 };
