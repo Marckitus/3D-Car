@@ -67,6 +67,26 @@ bool ModuleSceneIntro::Start()
 	ball6->body.type = BALL;
 	ball6->body.collision_listeners.add(this);
 	primitives.PushBack(ball6);
+	ball7 = new Sphere(3, 0.75);
+	ball7->body.SetPos(5000, 3, 0);
+	ball7->body.type = BALL;
+	ball7->body.collision_listeners.add(this);
+	primitives.PushBack(ball7);
+	ball8 = new Sphere(3, 0.75);
+	ball8->body.SetPos(6000, 3, 0);
+	ball8->body.type = BALL;
+	primitives.PushBack(ball8);
+	ball8->body.collision_listeners.add(this);
+	ball9 = new Sphere(3, 0.75);
+	ball9->body.SetPos(7000, 3, 0);
+	ball9->body.type = BALL;
+	ball9->body.collision_listeners.add(this);
+	primitives.PushBack(ball9);
+	ball10 = new Sphere(3, 0.75);
+	ball10->body.SetPos(8000, 3, 0);
+	ball10->body.type = BALL;
+	ball10->body.collision_listeners.add(this);
+	primitives.PushBack(ball10);
 
 	floor.size.Set(140, 3, 140);
 	floor.SetPos(0, -1.4, 0);
@@ -288,24 +308,43 @@ update_status ModuleSceneIntro::Update(float dt)
 		}
 		if (score == 1 && secondRound == false)
 		{
-			goal = false;
 			secondRound = true;
 			ball2->body.SetPos(-50, 3, 0);
 			ball3->body.SetPos(50, 3, 0);
-			App->player->time = 120;
+			App->player->time += 60;
 		}
 		if (score == 3 && thirdRound == false)
 		{
-			goal = false;
 			thirdRound = true;
 			ball4->body.SetPos(-50, 3, 0);
 			ball5->body.SetPos(50, 3, 0);
 			ball6->body.SetPos(0, 3, 50);
-			ball2->body.SetPos(50000, 3, -40);
-			ball3->body.SetPos(4000, 3, -40);
-			App->player->time = 120;
+			App->player->time += 30;
 		}
-
+		if (score == 6 && forthRound == false)
+		{
+			forthRound = true;
+			ball7->body.SetPos(-50, 3, 0);
+			ball8->body.SetPos(50, 3, 0);
+			ball9->body.SetPos(0, 3, 50);
+			ball10->body.SetPos(0, 3, -50);
+			App->player->time += 30;
+		}
+		if (score == 10 && finalRound == false)
+		{
+			finalRound = true;
+			ball->body.SetPos(50, 3, 0);
+			ball2->body.SetPos(-50, 3, 0);
+			ball3->body.SetPos(40, 3, 10);
+			ball4->body.SetPos(-40, 3, 10);
+			ball5->body.SetPos(0, 3, -50);
+			ball6->body.SetPos(0, 3, 50);
+			ball7->body.SetPos(10, 3, 40);
+			ball8->body.SetPos(-10, 3, 40);
+			ball9->body.SetPos(40, 3, 40);
+			ball10->body.SetPos(-40, 3, -40);
+			App->player->time += 30;
+		}
 	}
 	else
 	{
@@ -325,6 +364,26 @@ update_status ModuleSceneIntro::Update(float dt)
 			ball5->color = Green;
 			ball6->color = Green;
 		}
+		if (forthRound == true)
+		{
+			ball7->color = Green;
+			ball8->color = Green;
+			ball9->color = Green;
+			ball10->color = Green;
+		}
+		if (finalRound == true)
+		{
+			ball->color = Green;
+			ball2->color = Green;
+			ball3->color = Green;
+			ball4->color = Green;
+			ball5->color = Green;
+			ball6->color = Green;
+			ball7->color = Green;
+			ball8->color = Green;
+			ball9->color = Green;
+			ball10->color = Green;
+		}
 	}
 	else if (App->player->time < 60 && App->player->time >20)
 	{
@@ -339,6 +398,26 @@ update_status ModuleSceneIntro::Update(float dt)
 			ball4->color = Naranja;
 			ball5->color = Naranja;
 			ball6->color = Naranja;
+		}
+		if (forthRound == true)
+		{
+			ball7->color = Naranja;
+			ball8->color = Naranja;
+			ball9->color = Naranja;
+			ball10->color = Naranja;
+		}
+		if (finalRound == true)
+		{
+			ball->color = Naranja;
+			ball2->color = Naranja;
+			ball3->color = Naranja;
+			ball4->color = Naranja;
+			ball5->color = Naranja;
+			ball6->color = Naranja;
+			ball7->color = Naranja;
+			ball8->color = Naranja;
+			ball9->color = Naranja;
+			ball10->color = Naranja;
 		}
 	}
 	else if (App->player->time < 20)
@@ -355,14 +434,32 @@ update_status ModuleSceneIntro::Update(float dt)
 			ball5->color = Red;
 			ball6->color = Red;
 		}
+		if (forthRound == true)
+		{
+			ball7->color = Red;
+			ball8->color = Red;
+			ball9->color = Red;
+			ball10->color = Red;
+		}
+		if (finalRound == true)
+		{
+			ball->color = Red;
+			ball2->color = Red;
+			ball3->color = Red;
+			ball4->color = Red;
+			ball5->color = Red;
+			ball6->color = Red;
+			ball7->color = Red;
+			ball8->color = Red;
+			ball9->color = Red;
+			ball10->color = Red;
+		}
 	}
 
 	if (App->player->time == 0)
 	{
 		ball->Update();
 		App->player->gameplay = false;
-		
-		
 	}
 
 	for (uint n = 0; n < primitives.Count(); n++)
@@ -383,15 +480,14 @@ update_status ModuleSceneIntro::PostUpdate(float dt)
 
 void ModuleSceneIntro::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
 {
-	if(body1->type == type::BALL && body2->is_sensor == true && goal == false)
+	if(body1->type == type::BALL && body2->is_sensor == true)
 	{
-		goal = true;
 		score++;
+		body1->SetPos(50000, 3, -40);
 	}
-	else if (body2->type == type::BALL && body1->type == type::GOAL && goal == false)
+	else if (body2->type == type::BALL && body1->type == type::GOAL)
 	{
-		goal = true;
-		score++;
+		//score++;
 	}
 }
 

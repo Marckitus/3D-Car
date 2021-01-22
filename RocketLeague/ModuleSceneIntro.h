@@ -48,6 +48,10 @@ public:
 	Sphere* ball4;
 	Sphere* ball5;
 	Sphere* ball6;
+	Sphere* ball7;
+	Sphere* ball8;
+	Sphere* ball9;
+	Sphere* ball10;
 	Cube floor;
 	Cube wall1;
 	Cube wall2;
@@ -75,5 +79,5 @@ public:
 	bool secondRound = false;
 	bool thirdRound = false;
 	bool forthRound = false;
-	bool goal = false;
+	bool finalRound = false;
 };

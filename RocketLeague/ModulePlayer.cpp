@@ -131,6 +131,7 @@ update_status ModulePlayer::Update(float dt)
 		App->scene_intro->secondRound = false;
 		App->scene_intro->thirdRound = false;
 		App->scene_intro->forthRound = false;
+		App->scene_intro->finalRound = false;
 		
 	}
 	if(gameplay == true)
