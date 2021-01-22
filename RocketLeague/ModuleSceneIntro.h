@@ -73,7 +73,7 @@ public:
 	SDL_Texture* Win;
 	SDL_Texture* Lose;
 
-
+	uint point;
 	int score = 0;
 	bool firstRound = false;
 	bool secondRound = false;

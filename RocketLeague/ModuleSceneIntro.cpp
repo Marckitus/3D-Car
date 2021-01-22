@@ -18,6 +18,7 @@ bool ModuleSceneIntro::Start()
 {
 	LOG("Loading Intro assets");
     App->audio->PlayMusic("Assets/Sound/Initial D - Deja Vu.ogg");
+	point = App->audio->LoadFx("Assets/Sound/points.wav");
 
 	bool ret = true;
     App->camera->Move(vec3(1.0f, 1.0f, 0.0f));
@@ -483,6 +484,7 @@ void ModuleSceneIntro::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
 	if(body1->type == type::BALL && body2->is_sensor == true)
 	{
 		score++;
+		App->audio->PlayFx(point);
 		body1->SetPos(50000, 3, -40);
 	}
 	else if (body2->type == type::BALL && body1->type == type::GOAL)

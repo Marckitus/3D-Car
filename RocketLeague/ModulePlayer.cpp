@@ -177,6 +177,8 @@ update_status ModulePlayer::Update(float dt)
 	if (App->input->GetKey(SDL_SCANCODE_P) == KEY_DOWN)
 	{
 		App->scene_intro->score++;
+		App->audio->PlayFx(App->scene_intro->point);
+
 	}
 
 
