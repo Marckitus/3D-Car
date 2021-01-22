@@ -457,7 +457,7 @@ update_status ModuleSceneIntro::Update(float dt)
 		}
 	}
 
-	if (App->player->time == 0)
+	if (App->player->time == 0|| score==20)
 	{
 		ball->Update();
 		App->player->gameplay = false;

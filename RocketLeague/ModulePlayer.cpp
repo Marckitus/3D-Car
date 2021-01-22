@@ -127,6 +127,10 @@ update_status ModulePlayer::Update(float dt)
 		App->scene_intro->ball4->body.SetPos(41000, 3, -40);
 		App->scene_intro->ball5->body.SetPos(53000, 3, -40);
 		App->scene_intro->ball6->body.SetPos(4400, 3, -40);
+		App->scene_intro->ball7->body.SetPos(4400, 3, -40);
+		App->scene_intro->ball8->body.SetPos(4400, 3, -40);
+		App->scene_intro->ball9->body.SetPos(4400, 3, -40);
+		App->scene_intro->ball10->body.SetPos(4400, 3, -40);
 		App->scene_intro->firstRound = false;
 		App->scene_intro->secondRound = false;
 		App->scene_intro->thirdRound = false;
