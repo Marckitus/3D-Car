@@ -98,9 +98,7 @@ bool ModulePlayer::Start()
 	car.wheels[3].steering = false;
 
 	vehicle = App->physics->AddVehicle(car);
-	vehicle->SetPos(0, 4, -60);
-	vehicle->collision_listeners.add(this);
-	vehicle->GetBody()->setUserPointer(vehicle);
+	vehicle->SetPos(0, 4, -50);
 	
 	return true;
 }
@@ -120,7 +118,7 @@ update_status ModulePlayer::Update(float dt)
 	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN)
 	{
 		gameplay = true;
-		vehicle->SetPos(0, 4, -60);
+		vehicle->SetPos(0, 4, -50);
 		time = 120;
 		App->scene_intro->score = 0;
 		App->scene_intro->ball->body.SetPos(50, 3, 0);

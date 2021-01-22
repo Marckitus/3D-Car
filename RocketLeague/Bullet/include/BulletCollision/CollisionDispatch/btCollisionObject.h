@@ -428,12 +428,13 @@ public:
 	
 	SIMD_FORCE_INLINE int	getCollisionFlags() const
 	{
-		return m_collisionFlags;
+		if(this != nullptr) return m_collisionFlags;
 	}
 
 	void	setCollisionFlags(int flags)
 	{
-		m_collisionFlags = flags;
+
+		if(this != nullptr) m_collisionFlags = flags;
 	}
 	
 	///Swept sphere radius (0.0 by default), see btConvexConvexAlgorithm::

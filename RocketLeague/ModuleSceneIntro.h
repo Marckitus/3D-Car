@@ -40,12 +40,31 @@ public:
 	PhysMotor3D* left_wheel;
 	PhysMotor3D* right_wheel;
 
-	Primitive* ball;
-	Primitive* ball2;
-	Primitive* ball3;
-	Primitive* ball4;
-	Primitive* ball5;
-	Primitive* ball6;
+	Cylinder goal;
+	Sphere* goal2;
+	Sphere* ball;
+	Sphere* ball2;
+	Sphere* ball3;
+	Sphere* ball4;
+	Sphere* ball5;
+	Sphere* ball6;
+	Cube floor;
+	Cube wall1;
+	Cube wall2;
+	Cube wall3;
+	Cube wall4;
+	Cube obs1;
+	Cube obs2;
+	Cube obs3;
+	Cube obs4;
+	Cube obs5;
+	Cube obs6;
+	Cube obs7;
+	Cube obs8;
+	Cube vis1;
+	Cube vis2;
+	Cube vis3;
+	Cube vis4;
 
 	SDL_Texture* Win;
 	SDL_Texture* Lose;
@@ -56,4 +75,5 @@ public:
 	bool secondRound = false;
 	bool thirdRound = false;
 	bool forthRound = false;
+	bool goal = false;
 };
